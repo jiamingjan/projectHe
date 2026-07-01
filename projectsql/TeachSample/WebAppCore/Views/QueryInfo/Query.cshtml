@@ -1,0 +1,145 @@
+﻿@{    
+    ViewBag.Title = "股票推荐";   
+    Layout = "~/Views/Shared/_tableLayout_Old.cshtml";
+}
+
+@section CSS{
+    <meta charset="UTF-8" />
+    <title></title>         
+    <link rel="stylesheet" href="~/lib/old/css/bootstrap.min.css" />  
+    <style>       
+
+        .layui-layer-tab .layui-layer-content {
+            position: absolute !important;
+            left: 0px !important;
+        }
+
+        .layui-layer-tab .layui-layer-tabmain {
+            padding: 0px;
+        }
+
+        iframe {
+            width: 820px;
+            height: 600px;
+        }
+
+        /*iframe {
+                    width: 600px;
+                    height: 360px;
+                }*/
+
+
+        .form-group {
+            margin-right: 30px;
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                margin-right: 10px;
+            }
+    </style>
+}
+@section JS{
+    
+    <script src="~/lib/old/js/jquery.min.js"></script>
+    <script src="~/lib/old/js/bootstrap.min.js"></script>    
+    <script src="~/lib/old/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="~/lib/old/js/plugins/jqgrid/jquery.jqGrid.min.js"></script>    
+    <script src="~/lib/old/js/locales/zh.js"></script>
+    <script src="~/lib/old/js/MyTool.js"></script>
+    <script src="~/lib/old/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>    
+
+    <script>
+
+        function StockTable() {
+            var isSearch = false;       //用于设置是否点击了搜索按钮，不然初始化中的总计值会覆盖搜索中的总计功能。
+
+            this.initSearch = function () {
+                $('#searchBtn').bind('click', function () {
+                    isSearch = true;
+                    var data = $("#searchForm").serialize();
+                    $("#table_Stock").jqGrid('clearGridData');  //清空表格
+                    $("#table_Stock").jqGrid('setGridParam', {  // 重新加载数据
+                        url: 'GetTableData?' + data,//请求数据的地址
+                        data: data,   //  newdata 是符合格式要求的需要重新加载的数据
+
+                    }).trigger("reloadGrid");
+                });
+                $('#clearBtn').bind('click', function () {
+                    $('#stockCode').val("");
+                    $('#stockName').val("");
+                    $('#stockField').val("");
+                    $('#stockDate').val("");
+                    $('#startTime').val("");
+                    $('#endTime').val("");
+                });
+            };
+        }
+
+        $(document).ready(function () {
+            var tool = new MyTool();
+            var stock = new StockTable();
+            stock.initSearch();           
+        });
+
+    </script>
+}
+
+@section Body{
+    <body>    
+        <div class="wrapper wrapper-content  animated fadeInRight" style="padding-bottom:0px; padding:0px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox " style="margin-bottom:0px;">
+                        <div class="ibox-title">
+                            <h5>股票推荐</h5>
+                        </div>
+                        <div class="ibox-content" style="padding-bottom:10px;">
+
+                            <form class="form-inline" id="searchForm">                            
+                                <div class="form-group">
+                                    <label for="customer">查询的用户：</label>
+                                    <input type="text" class="form-control" id="user" name="user">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer">查询的股票：</label>
+                                    <input type="text" class="form-control" id="queryStock" name="queryStock">
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <label for="startTime">查询时间：</label>
+                                    <input readonly class="form-control layer-date" placeholder="查询起始" id="startTime" name="startTime">
+                                    <label class="laydate-icon inline demoicon" style="vertical-align:top;"
+                                           onclick="laydate({elem: '#startTime',istime: true,format: 'YYYY-MM-DD hh:mm:ss'});"></label>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <input readonly class="form-control layer-date" placeholder="查询结束" style="margin-left:30px;" id="endTime" name="endTime">
+                                    <label class="laydate-icon inline demoicon" style="vertical-align:top;"
+                                           onclick="laydate({elem: '#endTime',istime: true,format: 'YYYY-MM-DD hh:mm:ss'});"></label>
+
+                                </div>
+
+                                <div class="form-group">                                    
+                                    <button type="button" id="clearBtn" class="btn btn-w-m btn-info" style="margin-left: 50px;">清空</button>
+                                    <button id="searchBtn" type="button" class="btn btn-w-m btn-success" style="margin-left: 10px;">搜索</button>
+                                </div>
+                            </form>
+
+
+                            <div class="jqGrid_wrapper"> 
+                                <div style="font-weight:600;text-align:right; float:right"></div>
+                                
+                                <table id="table_QueryInfo"></table>
+                                <div id="pager_QueryInfo"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+}

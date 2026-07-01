@@ -1,0 +1,250 @@
+﻿<html>
+<head>
+    <title>Vue 3 in .cshtml</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    
+		<template>
+			<div id="app">
+				<!-- 上搜索框 -->
+				<div class="books">
+					<el-form :inline="true" class="demo-form-inline" style="margin-top: 40px; margin-left: 20px;">
+						<el-form-item label="书本名称">
+							<el-input v-model="bookname" placeholder="请输入书本名称..."></el-input>
+						</el-form-item>
+
+						<el-form-item>
+							<el-button type="primary" @@click="onSubmit">查询</el-button>
+							<el-button type="primary" @@click="open()">新增</el-button>
+						</el-form-item>
+					</el-form>
+				</div>
+
+				<!-- 中 数据表格 -->
+				<el-table :data="tableData" style="width: 100%">
+					<el-table-column prop="id" label="书本编号" width="180"></el-table-column>
+					<el-table-column prop="bookname" label="书本名称" width="180"></el-table-column>
+					<el-table-column prop="price" label="书本价格"></el-table-column>
+					<el-table-column prop="booktype" label="书本类型"></el-table-column>
+					<el-table-column label="操作">
+						<template slot-scope="scope">
+							<el-button size="mini" @@click="open(scope.$index, scope.row)">编辑</el-button>
+							<el-button size="mini" type="danger" @@click="del(scope.$index, scope.row)">删除</el-button>
+						</template>
+					</el-table-column>
+				</el-table>
+
+
+				<!-- 下 分页条 -->
+				<div class="block">
+					<el-pagination @@size-change="handleSizeChange" @@current-change="handleCurrentChange" :current-page="page"
+								   :page-sizes="[10, 20, 30, 40]" :page-size="rows" layout="total, sizes, prev, pager, next, jumper"
+								   :total="total">
+					</el-pagination>
+				</div>
+
+
+				<!--对话框-->
+				<el-dialog title="title" :visible.sync="dialogFormVisible" @@close="clear()">
+					<el-form :model="book">
+						<el-form-item label="书籍编号" :label-width="formLabelWidth">
+							<el-input v-model="book.id" autocomplete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="书籍名称" :label-width="formLabelWidth" prop="bookname">
+							<el-input v-model="book.bookname" autocomplete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="书籍价格" :label-width="formLabelWidth" prop="price">
+							<el-input v-model="book.price" autocomplete="off"></el-input>
+						</el-form-item>
+
+						<el-form-item label="书籍类别" :label-width="formLabelWidth" prop="booktype">
+							<el-select v-model="book.booktype" placeholder="请选择活动区域">
+								<el-option v-for="t in types" :label="t.name" :value="t.name" :key="'key'+t.id"></el-option>
+							</el-select>
+						</el-form-item>
+					</el-form>
+					<div slot="footer" class="dialog-footer">
+						<el-button @@click="dialogFormVisible = false">取 消</el-button>
+						<el-button type="primary" @@click="dosub">确 定</el-button>
+					</div>
+				</el-dialog>
+
+			</div>
+		</template>
+
+ 
+    <script type="importmap">
+        {
+          "imports": {
+            "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+          }
+        }
+    </script>
+   
+
+	<script type="module">
+		//import { createApp, ref, reactive, toRefs } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+		import { createApp, ref, reactive, toRefs } from 'vue';
+		export default {
+			data() {
+				return {
+					bookname: '',
+					tableData: [],
+					rows: 10,
+					page: 1,
+					total: 0,
+					title: '新增窗体',
+					dialogFormVisible: false,
+					formLabelWidth: '100px',
+					types: [],
+					book: {
+						id: '',
+						bookname: '',
+						price: '',
+						booktype: ''
+					},
+
+
+				}
+			},
+			methods: {
+				del(idx, row) {
+					this.$confirm('此操作将永久删除id为' + row.id + '的数据,是否继续?', '提示', {
+						confirmButtonText: '确定',
+						cancelButtonText: '取消',
+						type: 'warning'
+					}).then(() => {
+						let url = this.axios.urls.Book_DEL;
+						this.axios.post(url, {
+							id: row.id
+						}).then(r => {
+							this.clear();
+							this.query({})
+							this.$message({
+								type: 'success',
+								message: '删除成功!'
+							});
+							this.query({});
+						}).catch(e => {
+
+						})
+
+					}).catch(() => {
+						this.$message({
+							type: 'info',
+							message: '已取消删除'
+						});
+					});
+				},
+				dosub() {
+					this.$refs['book'].validate((valid) => {
+						if (valid) {
+
+							let url = this.axios.urls.Book_ADD;
+							if (this.title == '编辑窗体') {
+								url = this.axios.urls.Book_UPD;
+							}
+							let params = {
+								id: this.book.id,
+								bookname: this.book.bookname,
+								price: this.book.price,
+								booktype: this.book.booktype
+							};
+							console.log(params);
+							this.axios.post(url, params).then(r => {
+								this.clear();
+								this.query({})
+							}).catch(e => {
+
+							})
+
+						} else {
+							console.log('error submit!!');
+							return false;
+						}
+					});
+
+
+				},
+				//初始化对话框，重置对话框
+				clear() {
+					this.dialogFormVisible = false;
+					this.title = '新增窗体';
+					this.book = {
+						id: '',
+						bookname: '',
+						price: '',
+						booktype: ''
+					}
+				},
+				open(idx, row) {
+					//打开对话框
+					this.dialogFormVisible = true;
+					if (row) {
+						this.title = '编辑窗体';
+						this.book.id = row.id;
+						this.book.bookname = row.bookname;
+						this.book.price = row.price;
+						this.book.booktype = row.booktype;
+					}
+				},
+				query(params) {
+					let url = this.axios.urls.Book_LIST;
+					this.axios.get(url, {
+						params: params
+					}).then(r => {
+						console.log(r);
+						this.tableData = r.data.rows;
+						this.total = r.data.total;
+					}).catch(e => { })
+				},
+				onSubmit() {
+					let params = {
+						bookname: this.bookname
+					}
+					this.query(params);
+				},
+
+				//当页大小发生变化
+				handleSizeChange(r) {
+					let params = {
+						bookname: this.bookname,
+						rows: r,
+						page: this.page
+					}
+					this.query(params)
+				},
+				//当前页码发生变化
+				handleCurrentChange(p) {
+					let params = {
+						bookname: this.bookname,
+						rows: this.rows,
+						page: p
+					}
+					this.query(params);
+				}
+			},
+			created() {
+				this.query({});
+				this.types = [{
+					id: 1,
+					name: '恐怖'
+				}, {
+					id: 2,
+					name: '惊悚'
+				}, {
+					id: 3,
+					name: '动画片'
+				}, {
+					id: 4,
+					name: '爱情'
+				}];
+			}
+
+		}
+	</script>
+
+
+</body>
+</html>

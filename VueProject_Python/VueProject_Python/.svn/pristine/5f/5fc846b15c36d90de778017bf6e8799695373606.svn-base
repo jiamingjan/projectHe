@@ -1,0 +1,11 @@
+sqlalchemy
+pymysql
+flask
+waitress
+pydantic
+pydantic_settings
+cryptography
+python-docx
+captcha
+Pillow
+pyjwt

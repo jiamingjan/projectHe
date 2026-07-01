@@ -1,0 +1,518 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\projectManage\\projectsql\\TeachSample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\viewmodel\\falldowndevicemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\viewmodel\\falldowndevicemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\service\\projectinfoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\service\\projectinfoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QT\\QTproject\\untitled\\mainwindow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\dbmodel\\vueworkdbteachcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\dbmodel\\vueworkdbteachcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\projectinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\projectinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\falldowndevicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\falldowndevicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\service\\iprojectinfoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\service\\iprojectinfoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\viewmodel\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\viewmodel\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\viewmodel\\projectinfomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\viewmodel\\projectinfomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\profiles\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\profiles\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\repository\\iprojectinfodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\repository\\iprojectinfodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\repository\\projectinfodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\repository\\projectinfodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\repository\\isysusersdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\repository\\isysusersdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\dbmodel\\projectinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\dbmodel\\projectinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\viewmodel\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\viewmodel\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\service\\ifalldowndeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\service\\ifalldowndeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\service\\ibaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\service\\ibaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\service\\falldowndeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\service\\falldowndeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\repository\\ifalldowndevicedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\repository\\ifalldowndevicedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\repository\\falldowndevicedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\repository\\falldowndevicedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\dbmodel\\falldowndevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\dbmodel\\falldowndevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\repository\\falldownlocationdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\repository\\falldownlocationdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\service\\ifalldownlocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\service\\ifalldownlocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\configcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\configcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\colordiffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\colordiffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|d:\\projectmanage\\projectsql\\teachsample\\webappcore\\controllers\\falldownlocationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20B4DB6F-5CB6-491F-A2AB-363720218643}|WebAppCore\\WebAppCore.csproj|solutionrelative:webappcore\\controllers\\falldownlocationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "mainwindow.cpp",
+              "DocumentMoniker": "D:\\QT\\QTproject\\untitled\\mainwindow.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\QT\\QTproject\\untitled\\mainwindow.cpp",
+              "ToolTip": "D:\\QT\\QTproject\\untitled\\mainwindow.cpp",
+              "RelativeToolTip": "..\\..\\..\\QT\\QTproject\\untitled\\mainwindow.cpp",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-05T08:36:32.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProjectInfoService.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\ProjectInfoService.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Service\\ProjectInfoService.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\ProjectInfoService.cs",
+              "RelativeToolTip": "WebAppCore\\Service\\ProjectInfoService.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAIwAoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:08:39.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProjectInfoModel.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\ProjectInfoModel.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\ViewModel\\ProjectInfoModel.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\ProjectInfoModel.cs",
+              "RelativeToolTip": "WebAppCore\\ViewModel\\ProjectInfoModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:09:04.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IProjectInfoService.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IProjectInfoService.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Service\\IProjectInfoService.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IProjectInfoService.cs",
+              "RelativeToolTip": "WebAppCore\\Service\\IProjectInfoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:08:26.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProjectInfoController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\ProjectInfoController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\ProjectInfoController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\ProjectInfoController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\ProjectInfoController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAMwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:51:03.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FalldownDeviceModel.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\FalldownDeviceModel.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\ViewModel\\FalldownDeviceModel.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\FalldownDeviceModel.cs",
+              "RelativeToolTip": "WebAppCore\\ViewModel\\FalldownDeviceModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:49:27.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\appsettings.json",
+              "RelativeDocumentMoniker": "WebAppCore\\appsettings.json",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\appsettings.json",
+              "RelativeToolTip": "WebAppCore\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-02T08:20:04.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VueworkdbTeachContext.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\DbModel\\VueworkdbTeachContext.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\DbModel\\VueworkdbTeachContext.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\DbModel\\VueworkdbTeachContext.cs",
+              "RelativeToolTip": "WebAppCore\\DbModel\\VueworkdbTeachContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T05:59:21.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FalldownDeviceController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\FalldownDeviceController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\FalldownDeviceController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\FalldownDeviceController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\FalldownDeviceController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAMwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:46:41.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "JwtSettings.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\JwtSettings.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\ViewModel\\JwtSettings.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\JwtSettings.cs",
+              "RelativeToolTip": "WebAppCore\\ViewModel\\JwtSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:09:06.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AutoMapperProfiles.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Profiles\\AutoMapperProfiles.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Profiles\\AutoMapperProfiles.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Profiles\\AutoMapperProfiles.cs",
+              "RelativeToolTip": "WebAppCore\\Profiles\\AutoMapperProfiles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:12:35.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IProjectInfoDAL.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\IProjectInfoDAL.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Repository\\IProjectInfoDAL.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\IProjectInfoDAL.cs",
+              "RelativeToolTip": "WebAppCore\\Repository\\IProjectInfoDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:08:04.862Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ISysUsersDAL.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\ISysUsersDAL.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Repository\\ISysUsersDAL.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\ISysUsersDAL.cs",
+              "RelativeToolTip": "WebAppCore\\Repository\\ISysUsersDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:07:58.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProjectInfoDAL.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\ProjectInfoDAL.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Repository\\ProjectInfoDAL.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\ProjectInfoDAL.cs",
+              "RelativeToolTip": "WebAppCore\\Repository\\ProjectInfoDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:07:51.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProjectInfo.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\DbModel\\ProjectInfo.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\DbModel\\ProjectInfo.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\DbModel\\ProjectInfo.cs",
+              "RelativeToolTip": "WebAppCore\\DbModel\\ProjectInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAmwBcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T08:06:22.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\RoleController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\RoleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:55:42.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\ViewModel\\ErrorViewModel.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\ViewModel\\ErrorViewModel.cs",
+              "RelativeToolTip": "WebAppCore\\ViewModel\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:40:16.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IFalldownDeviceService.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IFalldownDeviceService.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Service\\IFalldownDeviceService.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IFalldownDeviceService.cs",
+              "RelativeToolTip": "WebAppCore\\Service\\IFalldownDeviceService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:27:01.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IBaseService.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IBaseService.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Service\\IBaseService.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IBaseService.cs",
+              "RelativeToolTip": "WebAppCore\\Service\\IBaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:39:57.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "FalldownDeviceService.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\FalldownDeviceService.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Service\\FalldownDeviceService.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\FalldownDeviceService.cs",
+              "RelativeToolTip": "WebAppCore\\Service\\FalldownDeviceService.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAswKsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:39:31.951Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IFalldownDeviceDAL.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\IFalldownDeviceDAL.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Repository\\IFalldownDeviceDAL.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\IFalldownDeviceDAL.cs",
+              "RelativeToolTip": "WebAppCore\\Repository\\IFalldownDeviceDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:26:45.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FalldownDeviceDAL.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\FalldownDeviceDAL.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Repository\\FalldownDeviceDAL.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\FalldownDeviceDAL.cs",
+              "RelativeToolTip": "WebAppCore\\Repository\\FalldownDeviceDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:26:31.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "FalldownDevice.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\DbModel\\FalldownDevice.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\DbModel\\FalldownDevice.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\DbModel\\FalldownDevice.cs",
+              "RelativeToolTip": "WebAppCore\\DbModel\\FalldownDevice.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAcwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:15:50.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FalldownLocationDAL.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\FalldownLocationDAL.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Repository\\FalldownLocationDAL.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Repository\\FalldownLocationDAL.cs",
+              "RelativeToolTip": "WebAppCore\\Repository\\FalldownLocationDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:36:06.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IFalldownLocationService.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IFalldownLocationService.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Service\\IFalldownLocationService.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Service\\IFalldownLocationService.cs",
+              "RelativeToolTip": "WebAppCore\\Service\\IFalldownLocationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T07:27:00.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:52:07.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "MenuController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\MenuController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\MenuController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\MenuController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\MenuController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:51:57.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PostController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\PostController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\PostController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\PostController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\PostController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:51:02.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ConfigController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\ConfigController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\ConfigController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\ConfigController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\ConfigController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:49:37.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ColorDiffController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\ColorDiffController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\ColorDiffController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\ColorDiffController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\ColorDiffController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:49:35.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "FalldownLocationController.cs",
+              "DocumentMoniker": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\FalldownLocationController.cs",
+              "RelativeDocumentMoniker": "WebAppCore\\Controllers\\FalldownLocationController.cs",
+              "ToolTip": "D:\\projectManage\\projectsql\\TeachSample\\WebAppCore\\Controllers\\FalldownLocationController.cs",
+              "RelativeToolTip": "WebAppCore\\Controllers\\FalldownLocationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T06:49:20.854Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

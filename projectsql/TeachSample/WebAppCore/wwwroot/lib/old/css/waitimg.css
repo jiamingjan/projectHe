@@ -1,0 +1,32 @@
+/*
+ *
+ *  
+ *   waitimg
+ *
+*/
+
+#waitimg {
+	display: none;
+	position: fixed;
+	margin: auto;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+.flow_block {
+	line-height: 30px;
+	text-align: center;
+	color: white;
+	font-size: 18px;
+	margin-top: 40px;
+}
+
+	.flow_block img {
+		width: 20px;
+		height: 30px;
+		vertical-align: bottom;
+		margin: 0px;
+		outline-width: 0px;
+	}

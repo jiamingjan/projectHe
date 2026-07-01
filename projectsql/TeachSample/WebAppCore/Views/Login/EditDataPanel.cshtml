@@ -1,0 +1,246 @@
+﻿@{
+    ViewBag.Title = "EditDataPanel";
+    Layout = "~/Views/Shared/_Layout_Old.cshtml";
+}
+@*@using MyModel*@
+@using System.Collections.Generic
+
+@section CSS{
+    <link href="~/lib/old/js/plugins/layer/skin/layer.css" rel="stylesheet" />
+    <link href="~/lib/old/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/old/js/plugins/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding: 10px 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        label.xreuired before {
+            content: '* ';
+            color: red;
+        }
+
+        table, tr, td {
+            width: 100%;
+            border: 1px solid #B3B4BA;
+            padding-left: 5px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        td {
+            width: 25%;
+            text-align: left;
+        }
+
+            td:nth-child(odd) {
+                background: #f9f9f9;
+            }
+    </style>
+}
+@section JS{
+    <script src="~/lib/old/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="~/lib/old/js/md5.js"></script>
+    <script src="~/lib/old/js/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="~/lib/old/js/MyTool.js"></script>
+
+    <script>
+        //启动页面执行
+        $(document).ready(function () {
+            //获取子表数据（下拉）
+            initSelectControl();
+
+            //初始化一些特殊控件
+            //initSpecialControl();
+            // $(".btn").dropdown();
+        });
+
+        //获取子表数据（下拉）
+        function initSelectControl() {
+            var url = "../Login/GetRoleTable";
+            getOption("#RoleId", url);            
+        }
+        //动态添加下拉框内容
+        function getOption(sid, url) {
+            $.ajax({
+                type: "get",
+                url: url,
+                async: true,
+                success: function (data) {
+                    var str = "";
+                    var json = $.parseJSON(data);
+                    for (var i = 0; i < json.length; i++) {
+                        //注意，json[i].Key传过来的是子表的自增id，这里还是用不可重复的有意义的值吧
+                        if (json[i].Value == $(sid + 'Temp').val()) //默认选中项
+                            str += "<option value='" + json[i].Key + "'selected='selected'>" + json[i].Value + "</option>";
+                        else
+                            str += "<option value='" + json[i].Key + "'>" + json[i].Value + "</option>";
+                    }
+                    $(sid).html(str);
+                    $(sid).selectpicker('refresh');
+                    //$(sid).selectpicker('render');
+                    return str;
+                }
+            });
+        }
+
+        $('#cancelBtn').bind('click', function () {
+
+        });
+
+        //检查必填项是否填上
+        function CheckRequired() {
+            if ($('#UserName').val() == "" || $('#UserName').val() == null) {
+                alert("用户名不能为空");
+                return false;
+            }
+            if ($('#Password').val() == "" || $('#Password').val() == null) {
+                alert("密码不能为空");
+                return false;
+            }
+        }
+
+
+        $('#saveBtn').bind('click', function () {
+            var tool = new MyTool();
+            var id = tool.getUrlParam("id");
+            var url;
+            var opr;
+
+            if (CheckRequired() == false)
+                return;
+
+            var Password = $("#Password").val();
+            //这里如果小于20表示是自己设置的密码，否则是从数据库里查询的md5加密过的密码，就不需要再加密了
+            if (Password != null && Password.length <= 20)  //加过密的32位
+                Password = hex_md5(Password);
+            $("#Password").val(Password);//这个要有，下面的语句读的就是重新赋值后的
+            var param = $("#contentForm").serialize();
+            //下拉框的数据不在param里面，需要手动添加，什么方法能自动添加呢？
+            param = param + "&UserRole=" + $("#UserRole").val(); //val()获取的值，不是text
+
+            if (id == null || id == "0") {
+                url = "AddTableData";//insert
+                opr = "新增";
+            }
+            else {
+                url = "UpdateTableData";//update
+                param = param + "&id=" + id; //添加id
+                opr = "修改";
+            }
+            $.ajax(
+                {
+                    url: url,
+                    type: "GET",
+                    async: false,
+                    data: param,
+                    success: function (data) {
+                        var json = $.parseJSON(data);
+                        if (json.code == 200) {
+                            alert(opr + '成功！');
+                            parent.$('#searchBtn').click(); //刷新表格
+                        }
+                        else {
+                            alert(opr + "失败:"+json.msg);
+                            // $("#Info").html("删除失败");
+                        }
+                    }
+                });
+        });
+    </script>
+}
+
+@section Body{
+    <body>
+        @*<form class="form-inline" id="contentForm">*@
+        <form class="form-horizontal" id="contentForm" role="form">
+            @{
+                /**/
+
+                /**/
+
+                SysUsersModel DetailData = ViewBag.DetailData;
+            }
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户名<span style="color:red;">* </span></label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="UserName" name="UserName" type="text" value="@DetailData.username">
+                </div>
+            </div>
+            <div class="form-group" style="display:none;">
+                <label class="col-sm-2 control-label">密码<span style="color:red;">* </span></label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="Password" name="Password" type="password" value="@DetailData.password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户角色</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="RoleIdTemp" name="RoleIdTemp" type="hidden" value="@DetailData.roleId">
+                    <select id="RoleId" class="form-control  show-tick selectpicker" data-live-search="true">></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">昵称</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="NickName" name="NickName" type="text" value="@DetailData.nickName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">电话</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="Phone" name="Phone" type="text" value="@DetailData.phone">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label">邮箱</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="Email" name="Email" type="text" value="@DetailData.email">
+                </div>
+            </div>
+            
+
+            @*<table id="form" align="center">
+        <tbody>
+        @{
+        /**/
+
+        /**/
+
+        UserTable DetailData = ViewBag.DetailData;
+        }
+        <tr>
+        <td>用户名</td>
+        <td>
+        <input type="text" class="form-control" id="UserName" name="UserName" value="@DetailData.UserName">
+        </td>
+        <td>密码</td>
+        <td>
+        <input type="password" class="form-control" id="Password" name="Password" value="@DetailData.Password">
+        </td>
+        </tr>
+        <tr>
+        <td>用户角色</td>
+        <td>
+        <input type="text" class="form-control" id="UserRole" name="UserRole" value="@DetailData.UserRight">
+        </td>
+        </tr>
+        </tbody>
+        </table>*@
+            <div style="position:absolute;right:21px;">
+                <button type="button" id="saveBtn" class="btn btn-w-m btn-success" style="margin-left: 10px;">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> 保  存
+                </button>
+            </div>
+        </form>
+
+    </body>
+}

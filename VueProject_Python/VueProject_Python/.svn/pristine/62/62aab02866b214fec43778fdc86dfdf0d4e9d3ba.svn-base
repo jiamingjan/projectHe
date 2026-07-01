@@ -1,0 +1,82 @@
+# -*- mode: python ; coding: utf-8 -*-
+
+
+block_cipher = None
+
+import glob
+import os
+
+def get_dir_files(base_dir):
+    datas = []
+    if not os.path.exists(base_dir):
+        print(f"警告: 目录未找到 -> {base_dir}")
+        return datas
+
+    search_path = os.path.join(base_dir, '**', '*')
+    files = glob.glob(search_path, recursive=True)
+    
+    project_root = os.getcwd()
+    src_root = os.path.join(project_root, 'src') 
+    
+    for f in files:
+        if os.path.isfile(f):
+            if '__pycache__' in f or f.endswith('.pyc'):
+                continue
+
+            try:
+                rel_path = os.path.relpath(f, src_root)
+            except ValueError:
+                rel_path = os.path.relpath(f, project_root)
+            
+            target_dir = os.path.dirname(rel_path)
+            datas.append((f, target_dir))
+    
+    return datas
+
+resources = []
+
+# 将模型权重信息作为静态资源打包
+resources.extend(get_dir_files(os.path.join('src', 'ml_models', 'weights', 'pretrained')))
+resources.extend(get_dir_files(os.path.join('src', 'ml_models', 'weights', 'production')))
+
+# 保存 doc 渲染模板
+resources.extend(get_dir_files(os.path.join('src', 'reports', 'templates')))
+
+a = Analysis(['src/main.py'],
+             pathex=[],
+             binaries=[],
+             datas=resources,
+             hiddenimports=[],
+             hookspath=[],
+             hooksconfig={},
+             runtime_hooks=[],
+             excludes=[],
+             win_no_prefer_redirects=False,
+             win_private_assemblies=False,
+             cipher=block_cipher,
+             noarchive=False)
+pyz = PYZ(a.pure, a.zipped_data,
+             cipher=block_cipher)
+
+exe = EXE(pyz,
+          a.scripts, 
+          [],
+          exclude_binaries=True,
+          name='main', # 可执行文件名称
+          debug=False,
+          bootloader_ignore_signals=False,
+          strip=False,
+          upx=True,
+          console=False, # 这里修改为 True 后即可开启终端显示
+          disable_windowed_traceback=False,
+          target_arch=None,
+          codesign_identity=None,
+          entitlements_file=None )
+coll = COLLECT(exe,
+               a.binaries,
+               a.zipfiles,
+               a.datas, 
+               strip=False,
+               upx=True,
+               upx_exclude=[],
+               name='main') # 目录名称

@@ -1,0 +1,385 @@
+﻿@{
+    ViewBag.Title = "用户管理";
+    Layout = "~/Views/Shared/_tableLayout_Old.cshtml";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/lib/login-new/css/bootstrap.min.css">
+    @*<link href="~/Assets/H+4.9/css/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet" />*@
+
+    <style>
+        .layui-layer-tab .layui-layer-content {
+            position: absolute !important;
+            left: 0px !important;
+        }
+
+        .layui-layer-tab .layui-layer-tabmain {
+            padding: 0px;
+        }
+
+        iframe {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+}
+@section JS{
+    <script src="~/lib/old/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="~/lib/old/js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="~/lib/old/js/MyTool.js"></script>
+
+    <script>
+        function UserManagementTable(/*MonitorType*/) {
+
+            this.initRight = function (right) {
+                //alert(right) 三个逗号隔开的4个数：依次表示增删改查，1表示可见，0或者没有表示不可见。例如：1,0,0，1
+                //searchBtn, addBtn, editBtn, deleteBtn
+                var ops = right.split(',');
+                if (!(ops[0] == '1')) {
+                    $("#searchBtn").hide();
+                }
+                if (!(ops[1] == '1')) {
+                    $("#addBtn").hide();
+                }
+                if (!(ops[2] == '1')) {
+                    $("#editBtn").hide();
+                }
+                if (!(ops[3] == '1')) {
+                    $("#deleteBtn").hide();
+                }
+            }
+
+            //this.MonitorType = MonitorType;
+            this.initSearch = function () {
+                $('#searchBtn').bind('click', function () {
+                    var data = $("#searchForm").serialize();
+                    //data += '&MonitorType=' + MonitorType;
+                    $("#table_UserManagement").jqGrid('clearGridData');  //清空表格
+                    $("#table_UserManagement").jqGrid('setGridParam', {  // 重新加载数据
+                        url: 'GetTableData?' + data,//请求数据的地址
+                        data: data,   //  newdata 是符合格式要求的需要重新加载的数据
+
+                    }).trigger("reloadGrid");
+
+                });
+                $('#clearBtn').bind('click', function () {
+                    $('#UserName').val("");
+                });
+            }
+            this.initTable = function () {
+                // alert();
+                var tableHeight = $(window).height() - 260;
+                $.jgrid.defaults.styleUI = 'Bootstrap';
+                //var url = 'GetTableData' + '?MonitorType=' + this.MonitorType;
+                var url = 'GetTableData';
+                // Examle data for jqGrid
+                // Configuration for jqGrid Example 2
+                $("#table_UserManagement").jqGrid({
+                    url: url,//请求数据的地址
+                    datatype: "json",
+                    height: tableHeight,
+                    autowidth: true,
+                    shrinkToFit: true,
+                    rowNum: 20,
+                    rowList: [10, 20, 30],
+                    rownumbers: true,
+                    colNames: ['Id',/*'Color',*/ '用户名', '昵称', '电话', '邮箱', '角色',],
+                    colModel: [
+                        {
+                            name: 'UserId',
+                            index: 'UserId',
+                            key: true,
+                            hidden: true
+                        },
+                        //{
+                        //    name: 'Color',
+                        //    index: 'Color',
+                        //    hidden: true
+                        //},
+                        {
+                            name: 'UserName',
+                            index: 'UserName',
+                            width: 70,
+                            sortable: true
+                        },                       
+                        {
+                            name: 'NickName',
+                            index: 'NickName',
+                            width: 70,
+                            sortable: false
+                        },
+                        {
+                            name: 'Phone',
+                            index: 'Phone',
+                            width: 70,
+                            sortable: false
+                        },                        
+                        {
+                            name: 'Email',
+                            index: 'Email',
+                            width: 70,
+                            sortable: false
+                        },
+                        {
+                            name: 'RoleId',
+                            index: 'RoleId',
+                            width: 70,
+                            sortable: false
+                        },
+                    ],
+                    pager: "#pager_UserManagement",
+                    viewrecords: true,
+                    hidegrid: false,
+                    multiselect: true,
+                    editurl: "/RowEditing",//editurl: "DeleteTableData", //没起作用
+                    //cellurl: "${pageContext.request.contextPath}/order/editEntity.shtml",
+                    gridComplete: function () {
+                        var ids = $("#table_UserManagement").getDataIDs();
+                        for (var i = 0; i < ids.length; i++) {
+                            var rowData = $("#table_UserManagement").getRowData(ids[i]);
+                            if (rowData.Color != "black") {//如果审核不通过，则背景色置于红色
+                                $('#' + ids[i]).find("td").css("background-color", rowData.Color);
+                                $('#' + ids[i]).find("td").css("color", "black");
+                            }
+
+                        }
+
+                    }
+                });
+
+                // Add responsive to jqGrid
+                $(window).bind('resize', function () {
+                    var width = $('.jqGrid_wrapper').width();
+                    $('#table_UserManagement').setGridWidth(width);
+                });
+            }
+
+            openUserRoleDetail = function (value) {
+                //alert(LampNo);
+                //这里一个工单可能有几个故障，所以用多个tab页就解决了;
+                var tabs = new Array();
+                var vals = value.split(",");
+                for (var i = 0; i < vals.length; i++) {
+                    var url = '../Role/DetailDataPanel?RoleNo=' + vals[i];
+                    var content = '<iframe src="' + url + '"  frameborder="no" border="0" "></iframe>';
+                    var tab = {
+                        title: '' + vals[i] + '角色信息详情',
+                        content: content
+                    }
+                    tabs[i] = tab;
+                }
+                layer.tab({
+                    area: ['900px', '480px'],
+                    tab: tabs
+                });
+            }
+
+
+            //function LampNoLink(cellValue, options, rowdata, action) {
+            //    //var url = '../Lamps/DetailDataPanel?LampNo=' + LampNo;
+            //    //return "<a href='url/Lamps/DetailDataPanel?/LampNo=" + rowdata.LampNo + "' class='ui-icon ui-icon-pencil' >" + rowdata.LampNo + "</a>";
+            //    if (rowdata.LampNo == null)//为空，不能显示null，而是显示空
+            //        return '<a href="javascript:;"onclick="openLampNoDetail(\'' + rowdata.LampNo + '\')" >'+ "</a>";
+            //    else
+            //        return '<a href="javascript:;"onclick="openLampNoDetail(\'' + rowdata.LampNo + '\')" >' + rowdata.LampNo + "</a>";
+            //}
+
+            function UserRoleLink(cellValue, options, rowdata, action) {
+                //var url = '../Lamps/DetailDataPanel?LampNo=' + LampNo;
+                //return "<a href='url/Lamps/DetailDataPanel?/LampNo=" + rowdata.LampNo + "' class='ui-icon ui-icon-pencil' >" + rowdata.LampNo + "</a>";
+                if (rowdata.UserRole == null)//为空，不能显示null，而是显示空
+                    return '<a href="javascript:;"onclick="openUserRoleDetail(\'' + rowdata.UserRole + '\')" >' + "</a>";
+                else
+                    return '<a href="javascript:;"onclick="openUserRoleDetail(\'' + rowdata.UserRole + '\')" >' + rowdata.UserRole + "</a>";
+            }
+
+            this.initPager = function () {
+                // Setup buttons
+                $("#table_UserManagement").jqGrid('navGrid', '#pager_UserManagement', {
+                    edit: false,
+                    add: false,
+                    del: false,
+                    search: false
+                },
+                    {
+
+                        height: 200,
+                        reloadAfterSubmit: true
+                    });
+            }
+
+            //删除
+            this.initEvent = function () {
+                $("#addBtn").click(function () {
+                    var url1 = 'EditDataPanel?id=0';
+                    var content1 = '<iframe src="' + url1 + '"  frameborder="no" border="0" "></iframe>';
+
+                    //页面层
+                    layer.tab({
+                        area: ['900px', '480px'],
+                        tab: [
+                            {
+                                title: '新增用户',
+                                content: content1
+                            }]
+                    });
+
+                });
+                $("#editBtn").click(function () {                    
+                    var grid = jQuery("#table_UserManagement");
+                    //var selectedRowId = grid.jqGrid('getGridParam', 'selrow');
+                    //var rowData = grid.jqGrid('getRowData', selectedRowId);
+
+                    var rowids = grid.jqGrid('getGridParam', 'selarrrow');
+                    //alert(rowid);
+                    if (rowids == null || rowids == 'undefined' || rowids.length != 1)
+                        layer.msg('请先选中一行!', { icon: 5, time: 2000 });
+                    else {
+                        var url1 = 'EditDataPanel?id=' + rowids[0];
+                        var content1 = '<iframe id="ifr" src="' + url1 + '"  frameborder="no" border="0" "></iframe>';
+
+                        //页面层
+                        //tab层
+                        layer.tab({
+                            area: ['900px', '480px'],
+                            tab: [
+                                {
+                                    title: '修改用户',
+                                    content: content1
+                                }]
+                        });
+                    }
+                });
+
+                $('#deleteBtn').bind('click', function () {
+                    var rowids = jQuery("#table_UserManagement").jqGrid('getGridParam', 'selarrrow');
+                   
+                    if (rowids == null || rowids == 'undefined' || rowids.length == 0)
+                        layer.msg('请先选中要删除的行', { icon: 5, time: 2000 });
+                    else {
+                        //做删除
+                        layer.confirm('确定要删除选中的行？', { btn: ['确定', '取消'], title: "提示" }, function () {
+                       
+                            $.ajax(
+                                {
+                                    url: "DeleteTableData",
+                                    type: "GET",
+                                    async: false,
+                                    data: "ids=" + escape(rowids),
+                                    success: function (data) {
+                                        var json = $.parseJSON(data);
+                                        if (json.code == 200) {
+                                            layer.msg('删除' + json.msg + '行成功！', { icon: 1, time: 2000 });
+                                            //重新加载数据
+                                            //$("#table_UserManagement").trigger("reloadGrid");//？？？
+                                            var search = $("#searchForm").serialize();
+                                            $("#table_UserManagement").jqGrid('setGridParam', {  // 重新加载数据
+                                                url: 'GetTableData?' + search,//请求数据的地址
+                                                data: search,   //  newdata 是符合格式要求的需要重新加载的数据
+                                            }).trigger("reloadGrid");
+                                        }
+                                        else {
+                                            layer.msg('删除失败：'+ json.msg, { icon: 2, time: 2000 });
+                                        }
+                                    }
+                                });
+
+                        });
+                    }
+                });
+
+                //详情
+                $("#table_UserManagement").jqGrid('setGridParam', {
+                    ondblClickRow: function (rowid, iRow, iCol, e) {
+                        var url1 = 'DetailDataPanel?id=' + rowid;
+                        var content1 = '<iframe src="' + url1 + '"  frameborder="no" border="0" "></iframe>';
+                        var url2 = 'EditDataPanel?id=' + rowid;
+                        var content2 = '<iframe src="' + url2 + '"  frameborder="no" border="0" "></iframe>';
+
+                        //页面层
+                        //tab层
+                        layer.tab({
+                            area: ['900px', '480px'],
+                            tab: [
+                                {
+                                    title: '用户详情',
+                                    content: content1
+                                },
+                                //{
+                                //    title: '修改用户',
+                                //    content: content1
+                                //}
+                            ]
+                        });
+
+                    }
+                });
+
+
+            }
+
+        }
+
+
+        $(document).ready(function () {
+            var tool = new MyTool();
+            //var MonitorType = tool.getUrlParam('MonitorType');
+            var userManagementTable = new UserManagementTable(/*MonitorType*/);
+            var right = tool.getUrlParam('right');
+            userManagementTable.initRight(right);
+            userManagementTable.initSearch();
+            userManagementTable.initTable();
+            userManagementTable.initPager();
+            userManagementTable.initEvent();
+        });
+    </script>
+}
+
+
+@section Body{
+    <body>
+<div class="wrapper wrapper-content  animated fadeInRight" style="padding-bottom:0px; padding:0px;">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox " style="margin-bottom:0px;">
+                <div class="ibox-title">
+                    <h5>用户管理</h5>
+                </div>
+                <div class="ibox-content" style="padding-bottom:10px;">
+
+                    <form class="form-inline" id="searchForm">
+                        <div class="form-group">
+                            <label for="customer">用户名：</label>
+                            <input type="text" class="form-control" id="UserName" name="UserName">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="clearBtn" class="btn btn-w-m btn-info" style="margin-left: 50px;">清空</button>
+                            <button id="searchBtn" type="button" class="btn btn-w-m btn-success" style="margin-left: 10px;">搜索</button>
+                        </div>
+                    </form>
+
+
+                    <div class="jqGrid_wrapper">
+                        <div style="font-weight:600;text-align:right;height:20px;"></div>
+                        <div class="list-op" id="list_op">
+                            @*<button type="button" id="addBtn" class="btn btn-default btn-success">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                            </button>*@
+                            <button type="button" id="editBtn" class="btn btn-default btn-warning">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+                            </button>
+                            <button type="button" id="deleteBtn" class="btn btn-default btn-danger">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                            </button>
+                        </div>
+                        <table id="table_UserManagement"></table>
+                        <div id="pager_UserManagement"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+}
+

@@ -1,0 +1,254 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "地图";
+    Layout = "~/Views/Shared/_Layout_Old.cshtml";
+}
+
+
+@section CSS {
+    <link href="~/lib/old/css/style.css" rel="stylesheet" />
+    <link href="~/lib/old/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/old/css/animate.css" rel="stylesheet" />
+    <link href="~/lib/old/css/font-awesome.min.css" rel="stylesheet" />
+    
+    <style>		
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#map_container {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+		}
+
+		.BMap_cpyCtrl {
+			   display:none;
+		}
+
+		.anchorBL {
+			   display:none;
+		}
+
+
+        label.xreuired before {
+            content: '* ';
+            color: red;
+        }
+
+        table, tr, td {
+            width: 100%;
+            border: 1px solid #B3B4BA;
+            padding-left: 5px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        td {
+            width: 25%;
+            text-align: left;
+        }
+
+            td:nth-child(odd) {
+                background: #f9f9f9;
+            }
+    </style>
+}
+@section JS {
+    <script src="~/lib/old/js/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="~/lib/old/js/jquery.min.js"></script>
+    <script src="~/lib/old/js/bootstrap.min.js"></script>
+    <script src="~/lib/old/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="~/lib/old/js/jquery-ui.custom.min.js"></script>
+    <script src="~/lib/old/js/content.js"></script>
+
+	<script src="//api.map.baidu.com/api?v=1.0&type=webgl&ak=PdyZlEYHDPQFKeOSbefTPll7L7r0EzVG"></script>
+	<script src="//mapv.baidu.com/build/mapv.min.js"></script>
+	<script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.139/dist/mapvgl.min.js"></script>
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=PdyZlEYHDPQFKeOSbefTPll7L7r0EzVG"></script>
+	<script src="~/lib/baidu/coordinate/coordtransform.js"></script>
+	<script src="~/lib/baidu/static/common.js"></script>
+    <script>
+				/* global BMapGL */
+
+		/* global mapv */
+
+		/* global mapvgl */
+
+		/* global initMap */
+
+		/* global whiteStyle */
+
+		/* global purpleStyle */
+
+		//添加弹出框的时候，如果按照官网上做，弹出的永远是最后一个点的位置
+		//下面用这2个函数添加可以解决这个问题
+		 function message(obj, point, title, content) {
+			var opts = {
+				width: 250,
+				height: 100,
+				title: title
+			}
+			var infoWindow = new BMapGL.InfoWindow("编号:" + content.code + "<br>" + "型号:" + content.model + "<br>" + "状态:" + content.status, opts);  // 创建信息窗口对象
+			obj.openInfoWindow(infoWindow, point);
+		}
+
+		function addMarker(point, marker, title, content) {  // 创建图标对象
+			map.addOverlay(marker);
+			marker.addEventListener("click", function () {
+				message(this, point, title, content);
+			});
+		}
+
+
+
+		var convertor = new BMap.Convertor();
+
+		var lonlatCenter = [120.3547990,30.3238310];
+		var pts = [];
+		pts.push(new BMap.Point(lonlatCenter[0], lonlatCenter[1]));
+
+		//先用公式（这里精度没百度convertor高）转换中心点坐标到百度坐标
+		var wgs84togcj02 = coordtransform.wgs84togcj02(lonlatCenter[0],lonlatCenter[1]);
+		var lonlatCenter = coordtransform.gcj02tobd09(wgs84togcj02[0],wgs84togcj02[1]);
+
+		var map = initMap({
+			tilt: 0,
+			heading: 0,
+			center: lonlatCenter,
+			zoom: 15,
+			style: myStyle//darkStyle//purpleStyle 这些在common.js中定义
+		});
+
+		// 创建九段线
+		var pt = new BMapGL.Point(130.943495,22.781036);
+		var myIcon = new BMapGL.Icon('../../lib/baidu/images/jiuduanxian.png', new BMapGL.Size(102, 150));
+		var marker = new BMapGL.Marker(pt, {icon: myIcon, enableDragging: true});  // 创建标注
+		map.addOverlay(marker);
+
+		var view = new mapvgl.View({
+			map: map
+		});
+
+		$.ajax({
+			url:"https://www.zhjtypt.com/vueback/falldownlocation/query?deviceCode=abc1",
+			method: 'GET',
+			async: true, //这里设置成同步?，否则下面的处理必须放入success里面（但是有问题）
+			success:function(result){
+				//srcpath这里以后添加属性数据，还是用geojason格式吧
+				var srcpath =JSON.parse(result);
+				if(srcpath != null){
+					var pointArr = [];
+					for (var i = 0; i < srcpath.length; i++)
+						pointArr.push(new BMap.Point(srcpath[i].lng, srcpath[i].lat));
+				}
+				convertor.translate(pointArr, COORDINATES_WGS84, COORDINATES_BD09, translateCallback2);
+			}
+		});
+
+		map.addEventListener("click", function(e){
+			//alert('您在地图上的点击坐标为：' + e.point.lng + ',' + e.point.lat); //这是非经纬度
+			//alert('您在地图上的点击坐标为：' + e.latlng.lng + ',' + e.latlng.lat);//这是经纬度
+			var pointArr = [];
+			pointArr.push(new BMap.Point(e.latlng.lng,  e.latlng.lat));
+			convertor.translate(pointArr, COORDINATES_WGS84, COORDINATES_BD09, translateCallback);
+		});
+
+		var translateCallback = function (data)
+		{
+			if(data == null || data.points == null || data.points.length <= 0)
+				return;
+			clickPoint = data.points[0];
+			var question = "经纬度" + clickPoint.lng + "," + clickPoint.lat + "周边景点推荐"
+			const model = 0; //chat
+			$.ajax({
+				url: "../AiApp/DeepSeekReq",
+				type: "GET",
+				async: false,
+				data: "model="+model+"&question=" + question,
+				success: function (data) {
+					var json = $.parseJSON(data);
+					if (json.code == 200) {
+						alert('您在地图上的点击坐标为：' + clickPoint.lng + "," + clickPoint.lat + ",景点推荐：" + json.data);//这是经纬度
+					}
+					else {
+						alert('您在地图上的点击坐标为：' + clickPoint.lng + "," + clickPoint.lat + ",景点推荐出错：" + json.code +"," +json.msg+json.data);						
+					}
+				}
+			});
+		}
+
+		var translateCallback2 = function (data)
+		{
+			if(data.status === 0)
+			{
+				baiduPoints = data.points;
+				if(baiduPoints != null && baiduPoints.length > 0)
+				{
+					var data1 = [];
+					for (var i = 0; i <baiduPoints.length; i++) {
+					//geoCoord 要求x，y以数组形式出现[120.1,40.1]
+						var geoCoord = [baiduPoints[i].lng,baiduPoints[i].lat];
+						data1.push({
+							geometry: {
+								type: 'Point',
+								coordinates: geoCoord
+							},
+							properties: {
+								time: Math.random() * 10
+							}
+						});
+
+						// 创建点标记,注意，当数据量非常大的时候，标记可能会比较慢
+						var point = new BMapGL.Point(baiduPoints[i].lng,baiduPoints[i].lat);
+						var marker = new BMapGL.Marker(point);
+						var content = {
+							code: "aa",
+							model:"bb",
+							status:"开机"
+						};
+						addMarker(point, marker, "跌倒报警器", content);
+					}
+
+					/*
+					view.addLayer(new mapvgl.PointLayer({
+						blend: 'lighter',
+						shape: 'square',
+						color: 'rgba(255, 77, 77, 0.8)', // 点图层1颜色
+						data: data1,
+						size: 10
+					}));
+					*/
+
+
+					view.addLayer(new mapvgl.PointTripLayer({
+						blend: 'lighter',
+						shape: 'circle',
+						startTime: 0, //动画开始时间
+						endTime: 10, //100, 动画结束时间
+						step: 0.1,//执行每次动画的步长
+						trailLength: 10,//动画的拖尾时长
+						color: 'rgba(255, 255, 0, 0.8)', // 点动画图层颜色
+						data: data1,
+						size: 10
+					}));
+
+				}
+			}
+		}
+    </script>
+}
+
+@section Body {
+    <body class="gray-bg">
+		<div id="map_container"></div>
+    </body>
+}

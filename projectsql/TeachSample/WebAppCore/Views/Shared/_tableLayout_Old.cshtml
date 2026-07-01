@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title </title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+
+
+    <link href="~/lib/old/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/old/css/animate.css" rel="stylesheet" />
+    <link href="~/lib/old/css/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/lib/old/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="~/lib/old/css/Site.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/WebAppCore.styles.css" asp-append-version="true" />*@
+    <link rel="stylesheet" href="~/lib/old/css/style.css" asp-append-version="true" />
+
+    <link href="~/lib/old/css/jqgrid/ui.jqgrid.css?0820" rel="stylesheet">
+   @* <link href="~/lib/old/js/theme/default/layer.css" rel="stylesheet" />*@
+    
+    @* <link href="~/lib/old/js/plugins/layui/css/modules/layer/default/layer.css" rel="stylesheet" /> *@
+    <style>
+        body {
+            border-top: 0px solid white;
+        }
+    </style>
+        @RenderSection("CSS", false)
+    </head>
+
+@RenderSection("Body", true)
+
+
+
+
+<!-- 全局js -->
+<script src="~/lib/old/js/plugins/layui/layui.all.js"></script>
+<script src="~/lib/old/js/jquery.min.js"></script>
+<script src="~/lib/old/js/bootstrap.min.js"></script>
+<script src="~/lib/old/js/layer.min.js"></script>
+<script src="~/lib/old/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
+<script src="~/lib/old/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
+<script src="~/lib/old/js/js.cookie.min.js"></script>
+
+@RenderSection("JS", false)
+</html>

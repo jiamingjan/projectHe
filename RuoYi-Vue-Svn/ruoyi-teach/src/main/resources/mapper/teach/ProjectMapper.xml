@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.teach.mapper.ProjectMapper">
+
+    <resultMap id="BaseResultMap" type="com.ruoyi.teach.domain.entity.Project">
+        <id property="id" column="Id" />
+        <result property="prjName" column="PrjName" />
+        <result property="prjCode" column="PrjCode" />
+        <result property="prjType" column="PrjType" />
+        <result property="prjStatus" column="PrjStatus" />
+        <result property="prjDesc" column="PrjDesc" />
+        <result property="startDate" column="StartDate" />
+        <result property="endDate" column="EndDate" />
+        <result property="manager" column="Manager" />
+        <result property="money" column="Money" />
+        <result property="remark" column="Remark" />
+        <result property="createBy" column="CreateBy" />
+        <result property="updateBy" column="UpdateBy" />
+        <result property="createTime" column="CreateTime" />
+        <result property="updateTime" column="UpdateTime" />
+        <result property="deleteTime" column="DeleteTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Id,PrjName,PrjCode,PrjType,PrjStatus,PrjDesc,
+        StartDate,EndDate,Manager,Money,Remark,
+        CreateBy,UpdateBy,CreateTime,UpdateTime,DeleteTime
+    </sql>
+
+    <select id="findByConditions" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        project_info
+        <where>
+            DeleteTime IS NULL
+            <if test="prjName != null">
+                AND PrjName LIKE CONCAT('%', #{prjName}, '%')
+            </if>
+            <if test="prjCode != null">
+                AND PrjCode LIKE CONCAT('%', #{prjCode}, '%')
+            </if>
+            <if test="manager != null">
+                AND Manager LIKE CONCAT('%', #{manager}, '%')
+            </if>
+            <if test="prjStatus != null">
+                AND PrjStatus = #{prjStatus}
+            </if>
+        </where>
+        ORDER BY Id DESC
+    </select>
+
+    <select id="findById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        project_info
+        WHERE
+        Id = #{id} AND DeleteTime IS NULL
+    </select>
+
+    <insert id="addProject" parameterType="com.ruoyi.teach.domain.entity.Project">
+        INSERT INTO project_info (
+            PrjName,PrjCode,PrjType,PrjStatus,PrjDesc,
+            StartDate,EndDate,Manager,Money,Remark,
+            CreateBy,UpdateBy,CreateTime,UpdateTime,DeleteTime
+        ) VALUES (
+                     #{prjName},#{prjCode},#{prjType},#{prjStatus},#{prjDesc},
+                     #{startDate},#{endDate},#{manager},#{money},#{remark},
+                     #{createBy},#{updateBy},NOW(),NOW(),NULL
+                 )
+    </insert>
+
+    <update id="updateProject" parameterType="com.ruoyi.teach.domain.entity.Project">
+        UPDATE project_info
+        <set>
+            <if test="prjName != null">PrjName = #{prjName},</if>
+            <if test="prjCode != null">PrjCode = #{prjCode},</if>
+            <if test="prjType != null">PrjType = #{prjType},</if>
+            <if test="prjStatus != null">PrjStatus = #{prjStatus},</if>
+            <if test="prjDesc != null">PrjDesc = #{prjDesc},</if>
+            <if test="startDate != null">StartDate = #{startDate},</if>
+            <if test="endDate != null">EndDate = #{endDate},</if>
+            <if test="manager != null">Manager = #{manager},</if>
+            <if test="money != null">Money = #{money},</if>
+            <if test="remark != null">Remark = #{remark},</if>
+            <if test="updateBy != null">UpdateBy = #{updateBy},</if>
+            UpdateTime = NOW()
+        </set>
+        WHERE
+        Id = #{id}
+    </update>
+
+    <update id="deleteProject">
+        UPDATE project_info SET DeleteTime = NOW()
+        WHERE Id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>

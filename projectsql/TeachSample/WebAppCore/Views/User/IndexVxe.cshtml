@@ -1,0 +1,617 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "用户管理";
+    Layout = "~/Views/Shared/_tableLayout_vxe.cshtml";
+}
+@section CSS {  
+}
+@section JS {
+    
+    <script type="text/javascript">
+        //下面是xe-ajax配置
+        //待补充
+
+        //VXETable.use(VXETablePluginExportXLSX)
+        Vue.$XModal = VXETable.modal //模式对话框（弹出框）
+        Vue.$XSaveFile = VXETable.saveFile //保存文件
+        Vue.$XReadFile = VXETable.readFile  //读取文件
+        // var editFormData = Vue.reactive({
+        //     username: '',
+        //     roleIds: '',
+        // });
+        //var selectRow = null;
+        var columnName = { //注意，左边是字段名，右边是显示的中文标题
+            userId: "编号",
+            username: "用户名",
+            nickName: "昵称",
+            phone: "电话",
+            sex:"性别",
+            email: "邮箱",
+            status:"状态",
+            remark:"备注",
+            avatar:"头像",
+            postId:"岗位",
+            deptId:"部门",
+            create_time:"创建时间",
+            update_time:"更新时间",
+            roleIds: "角色"
+        };
+
+        let app = Vue.createApp({
+            data() {
+                return {
+                    //下面这些是针对弹出框：详情、编辑、新增 start
+                    selectRow: null,
+                    showEdit: false, //刚开始不显示详情
+                    editFormData:Vue.ref(),
+                    showDetails: false,//刚开始不显示详情
+                    //end
+                    gridOptions: {
+                        border: true,                        
+                        showHeaderOverflow: true,
+                        showOverflow: true,                       
+                        keepSource: true,
+                        id: 'full_edit_1',
+                        height: 700,                        
+                        //showFooter: true,//显示表尾统计
+                        rowConfig:{
+                            isHover: true,
+                            keyField: 'userId', //特别注意：如果后台返回的数据没有id字段，那么前台会自动添加id字段，所以这里应该是后台返回 字段
+                        },
+                        columnConfig:{
+                            resizable: true,                            
+                        },
+                        customConfig: {
+                            storage: true, //是否启用 localStorage 本地保存，会将列操作状态保留在本地（需要有 id）
+                            //自定义列是否允许列选中的方法，该方法的返回值用来决定这一列的 checkbox 是否可以选中
+                            checkMethod: this.checkColumnMethod
+                        },
+                        printConfig: {
+                            columns: [
+                                { field: columnName.userId },
+                                { field: columnName.username },
+                                { field: columnName.nickName },
+                                { field: columnName.phone },
+                                { field: columnName.email },
+                                { field: columnName.roleIds },                               
+                            ]
+                        },
+                        sortConfig: {
+                            trigger: 'cell' //（点击表头触发）
+                        },
+                        filterConfig: {
+                            remote: true //改变会调用服务端
+                        },
+                        pagerConfig: {
+                            //layouts 可以不设置，默认和下面的有点不同
+                            layouts: ['PrevJump', 'PrevPage', 'JumpNumber', 'NextPage', 'NextJump', 'Sizes', 'FullJump', 'PageCount', 'Total'],
+                            pageSize: 10,
+                            pageSizes: [5, 10, 15, 20, 50, 100, 200, 500, 1000]
+                        },
+                        formConfig: {
+                            titleWidth: 100,
+                            titleAlign: 'right',
+                            items: [
+                                //folding: true 折叠起来
+                                { field: 'userId', title: columnName['userId'], span: 4, itemRender: { name: '$input', props: { placeholder: '请输入' + columnName['userId'] } } },
+                                { field: 'username', title: columnName['username'], span: 4, itemRender: { name: '$input', props: { placeholder: '请输入' + columnName['username'] } } },
+                                //{ field: 'NickName', title: columnName['NickName'], span: 4, itemRender: { name: '$input', props: { placeholder: '请输入'+columnName['NickName'] } } },
+                                { field: 'phone', title: columnName['phone'], span: 4, itemRender: { name: '$input', props: { placeholder: '请输入' + columnName['phone'] } } },
+                                { field: 'email', title: columnName['email'], span: 4, itemRender: { name: '$input', props: { placeholder: '请输入' + columnName['email'] } } },
+                                { field: 'roleIds', title: columnName['roleIds'], span: 4, folding: true, itemRender: { name: '$input', props: { placeholder: '请输入' + columnName['roleIds'] } } },
+
+                                //{ field: 'birth', title: '出生日期', span: 4, folding: true, itemRender: { name: '$input', props: { type: 'datetime', placeholder: '请输入日期' } } },
+                                { span: 24, align: 'center', collapseNode: true, itemRender: { name: '$buttons', children: [{ props: { type: 'submit', content: '查询', status: 'primary' } }, { props: { type: 'reset', content: '重置' } }] } }
+                            ]
+                        },
+                        toolbarConfig: {
+                            buttons: [
+                                { code: 'insert_actived', name: '新增', icon: 'vxe-icon-add', visible: true },
+                                { code: 'delete', name: '直接删除', icon: 'vxe-icon-delete' },
+                                { code: 'mark_cancel', name: '删除/取消', icon: 'vxe-icon-delete' },
+                                { code: 'save', name: '保存', icon: 'vxe-icon-save', status: 'success' }
+                            ],
+                            refresh: true,
+                            //导入导出
+                            import: true,
+                            export: true,
+                            print: true,
+                            zoom: true,
+                            custom: true
+                        },
+                        proxyConfig: {
+                            seq: true, // 启用动态序号代理
+                            sort: true, // 启用排序代理
+                            filter: true, // 启用筛选代理
+                            form: true, // 启用表单代理
+                            props: {
+                                result: 'result',
+                                total: 'page.total'
+                            },
+                            ajax: {
+                                // 接收 Promise 对象
+                                query: ({ page, sorts, filters, form }) => {
+                                    this.$refs.xGrid.maximize()//最大化表格，放哪里最合适？有些地方xGrid为null
+                                    //显示加载中,结束应该放哪里？
+                                    //this.loading = true
+                                    //获取表单的参数
+                                    const queryParams = Object.assign({}, form)
+                                    //如果有页面传来的参数，那么这里可以当做查询参数传入
+                                    if (this.project != null && this.project != '')
+                                        queryParams['project'] = this.project;
+                                    // 处理排序条件
+                                    const firstSort = sorts[0]
+                                    if (firstSort) {
+                                        queryParams.sort = firstSort.property
+                                        queryParams.order = firstSort.order
+                                    }
+                                    // 处理筛选条件（即表头上的下拉选择）
+                                    filters.forEach(({ property, values }) => {
+                                        queryParams[property] = values.join(',')
+                                    })
+                                    // 请求之前拦截器
+                                    // XEAjax.interceptors.request.use((request, next) => {
+                                    //   // 用于请求的权限拦截、设置请求头、Token 验证、参数等处理...  设置 Token 验证，预防 XSRF/CSRF 攻击
+                                    //   request.headers.set('Authorization', `Bearer ${Cookies.get('token')}`)
+                                    //   // 调用 next(),继续执行下一个拦截器
+                                    //   next()
+                                    // })
+                                    return XEAjax.get(`../User/GetVxeTableData?rows=${page.pageSize}&page=${page.currentPage}`, queryParams)
+                                },
+                                delete: ({ body }) => {
+                                    if (body != 'undefined') {
+                                        var list = body.removeRecords;
+                                        if (list != null && list != 'undefined' && list.length > 0)
+                                        {
+                                            return XEAjax.post('../User/Delete', list).then(data => {
+                                                // this.$refs.XModal 也有问题
+                                                if (data.code == 200)
+                                                {
+                                                    //Vue.$XModal.message({ message: `成功删除 ${data.msg} 条记录！`, status: 'success' })
+                                                    this.$refs.xGrid.commitProxy('query')// 刷新表格                                                    
+                                                }
+                                                else
+                                                    Vue.$XModal.message({ message: `删除失败：${data.msg}！`, status: 'error' })
+
+                                            }).catch(() => {
+                                                Vue.$XModal.message({ message: '删除失败！', status: 'error' })
+                                            })
+                                        }                                        
+                                    }
+                                },
+                                //add he update 都在这里  async 和 await组合产生同步的效果，去掉这2个关键词，默认就是异步
+                                save: async ({ body }) => {
+                                    //做修改
+                                    if (body != 'undefined') {
+                                        if (body.updateRecords.length > 0) {
+                                            var list = body.updateRecords;
+                                            if (list != null && list != 'undefined' && list.length > 0)
+                                                //下面用axios试试效果一样
+                                                await AXios.post(`../User/Update`, list).then(response => {
+                                                    var data = response.data;
+                                                //XEAjax.post(`../User/Update`, list).then(data => {                                                        
+                                                    if (data.code == 200)
+                                                        this.$refs.xGrid.commitProxy('query') //刷新表格
+                                                    else
+                                                        Vue.$XModal.message({ message: `修改失败：${data.msg}！`, status: 'error' })
+                                                }).catch(() => {
+                                                    Vue.$XModal.message({ message: '修改失败！', status: 'error' })
+                                                })
+                                        }
+                                        //有可能同时做插入和修改
+                                        if (body.insertRecords.length > 0) {
+                                            var list = body.insertRecords;
+                                            if (list != null && list != 'undefined' && list.length > 0)
+                                            {
+                                                for(var i= 0; i<list.length; i++)
+                                                    list[i].userId = 0; //这里如果后台是自增id，这里默认是字符串，后台收不到list
+
+                                                    await XEAjax.post(`../User/Add`, list).then(data => {                                                    
+                                                    if (data.code == 200)
+                                                        this.$refs.xGrid.commitProxy('query') //刷新表格
+                                                    else
+                                                        Vue.$XModal.message({ message: `新增失败：${data.msg}！`, status: 'error' })
+                                                }).catch(() => {
+                                                    Vue.$XModal.message({ message: '新增失败！', status: 'error' })
+                                                })                                               
+                                            }
+                                        }
+                                        //有可能前台做删除标记
+                                        if (body.pendingRecords.length > 0) {
+                                            var list = body.pendingRecords;
+                                            if (list != null && list != 'undefined' && list.length > 0)
+                                            {
+                                                return await XEAjax.post('../User/Delete', list).then(data => {
+                                                // this.$refs.XModal 也有问题
+                                                if (data.code == 200)
+                                                {
+                                                    //Vue.$XModal.message({ message: `成功删除 ${data.msg} 条记录！`, status: 'success' })
+                                                    this.$refs.xGrid.commitProxy('query')// 刷新表格
+                                                }
+                                                else
+                                                    Vue.$XModal.message({ message: `删除失败：${data.msg}！`, status: 'error' })
+                                                }).catch(() => {
+                                                    Vue.$XModal.message({ message: '删除失败！', status: 'error' })
+                                                })
+                                            }
+                                        }
+
+                                    }
+                                },
+                                //这个目前没加按钮
+                                add: async ({ body }) => {
+                                    if (body != 'undefined') {
+                                        var list = body.insertRecords;
+                                        if (list != null && list != 'undefined' && list.length > 0)
+                                        {
+                                            for(var i= 0; i<list.length; i++)
+                                                list[i].userId = 0; //这里如果后台是自增id，这里默认是字符串，后台收不到list
+                                            await XEAjax.post(`../User/Add`, list)
+                                            this.$refs.xGrid.commitProxy('query')
+                                        }                                                                                   
+                                    }
+                                }
+                                //save: ({ body }) => XEAjax.post('https://api.xuliangzhan.com:10443/api/pub/save', body)
+                            }
+                        },
+                        columns: [
+                            //{ type: 'checkbox', title: 'Id', width: 120 },
+                            { type: 'checkbox', width: 50 },
+                            { type: 'seq', width: 60 },
+                            //下面去掉 editRender: { name: 'input' }就不能编辑
+                            { field: 'userId', title: columnName['userId'], type:'number', sortable: true, editRender: { name: 'input' }, visible: false},
+                            { field: 'username', title: columnName['username'], sortable: true, editRender: { name: 'input' } },
+                            //{ field: 'NickName', title: columnName['NickName'], editRender: { name: 'input' } },
+                            { field: 'phone', title: columnName['phone'], editRender: { name: 'input' } },
+                            { field: 'email', title: columnName['email'], editRender: { name: 'input' } },
+                            { field: 'sex', title: columnName['sex'], editRender: { name: 'input' } },
+                            { field: 'roleIds', title: columnName['roleIds'], visible: true, sortable: true, editRender: { name: 'input' } },
+
+                            { field: 'update_time', title: columnName['update_time'], visible: true, sortable: true, formatter: this.formatDate, editRender: { name: 'VxeDatePicker', props: { type: 'datetime' } } },
+
+                            { field: 'create_time', title: columnName['create_time'], width: 160, visible: false, sortable: true, formatter: this.formatDate },
+                            { field: 'operate',title: '操作', width: 60, slots: { default: 'operate' } },
+                            //{ field: '',title: '实时数据', width: 60, slots: { default: 'operate' } },
+                             { field: '',title: '历史数据', width: 60, slots: { default: 'history' } }
+                           
+                             // {   //自定义插槽可以自定义事件
+                             //    slots: {
+                             //      default: ({ row }) => {
+                             //        return <el-button type="text" onClick={() => this.handleCell(row)}>删除</el-button>
+                             //      }
+                             //    }
+                             // },
+                        ],
+                        importConfig: {
+                            remote: true,
+                            importMethod: this.importMethod,
+                            types: ['xlsx'],
+                            modes: ['insert']
+                        },
+                        exportConfig: {
+                            remote: true,//是否服务端导出
+                            exportMethod: this.exportMethod, //只对服务端导出有效
+                            //xlsx在前端导出还是有问题，目前只能后端导出xlsx
+                            types: ['xlsx'],//['csv', 'html','txt','xml']
+                            modes: ['current', 'selected', 'all']
+                        },
+                        checkboxConfig: {
+                            //labelField: 'id', //是否checkbox旁边显示id编号
+                            reserve: true,
+                            highlight: true,
+                            range: true
+                        },
+                        editRules: {//表头上显示星号(required),及其他限制
+                            username: [
+                                { required: true, message: 'username必须填写' },
+                                { min: 3, max: 50, message: 'username长度在 3 到 50 个字符' }
+                            ]
+                        },
+                        editConfig: {
+                            trigger: 'click',
+                            mode: 'row',
+                            showStatus: true
+                        },
+
+                    }
+
+                }
+            },
+            created() {
+                //这个时候this.$refs.xGrid为null：this.$refs.xGrid.maximize()失效
+                //this.findSexList()
+                this.loading = false
+                //下面代码放哪里更合适？
+                var tool = new MyTool();
+                var right = tool.getUrlParam('right');
+                //if (right != null)
+                this.initRight(right)
+
+                //下句：获取页面传来的参数，用于后面查找query
+                this.project = tool.getUrlParam('project');
+
+                //下面的定时刷新数据，如果不需要定时刷新可以注释掉
+                //setInterval(() => {
+                //    this.$refs.xGrid.commitProxy('query');
+                //    this.loading = false
+                //}, 60000) //毫秒
+            },
+            methods: {
+                initRight(right) {
+                    //alert(right) 三个逗号隔开的4个数：依次表示查增改删，1表示可见，0或者没有表示不可见。例如：1,0,0,1
+                    // searchBtn, addBtn, editBtn, deleteBtn
+                    if (right != null) {
+                        var ops = right.split(',');
+                        if (!(ops[0] == '1')) {
+                            //这里最后一个item为查询和重置按钮
+                            var items = this.gridOptions.formConfig.items;
+                            if (items != 'undifined' && items.length > 0)
+                                items[items.length - 1].visible = false;
+                        }
+                        if (!(ops[1] == '1')) {
+                            this.gridOptions.toolbarConfig.buttons[0].visible = false;
+                        }
+                        if (!(ops[3] == '1')) {
+                            this.gridOptions.toolbarConfig.buttons[1].visible = false;
+                            this.gridOptions.toolbarConfig.buttons[2].visible = false;
+                        }
+                        if (!(ops[2] == '1')) {
+                            this.gridOptions.toolbarConfig.buttons[3].visible = false;
+                        }
+
+
+                        //不能修改和新增的时候，点击表格不能进入编辑状态
+                        if (!(ops[1] == '1') && !(ops[2] == '1')) {
+                            this.gridOptions.editConfig = null;
+                        }
+                    }
+                },
+
+                //日期格式
+                formatDate({ cellValue }) {
+                    return XEUtils.toDateString(cellValue, 'yyyy-MM-dd HH:ss:mm')
+                },
+                //表格的自定义显示列中必选的列，如果没有，下面就空着
+                checkColumnMethod({ column }) {
+                    //if (['nickname', 'role'].includes(column.property)) {
+                    //    return false
+                    //}
+                    return true
+                },
+                cellDBLClickEvent({ row }) {
+                    //下面是vxe-grid的方式：直接前台提供数据显示
+                    this.detailData = ['username', 'phone', 'email'].map(field => {
+                        return {
+                            label: this.$refs.xGrid.getColumnByField(field).title, value: row[field]
+                        }
+                    })
+                    this.showDetails = true
+                },
+                editEvent(row) {
+                  //Object.assign(this.editFormData, row)
+                  this.editFormData = row;//注意这里是引用，数据是一份，弹出框（editFormData）改了，一行（row）也改了
+                  this.selectRow = row
+                  // this.selectRow = ['username', 'phone', 'email'].map(field => {
+                  //       return {
+                  //           label: this.$refs.xGrid.getColumnByField(field).title, value: row[field]
+                  //       }
+                  //   })
+                  this.showEdit = true        
+                },
+                async editSubmit() {
+                    //第一种方法：
+                    // var list = [this.editFormData]
+                    // return await XEAjax.post('../User/Update', list).then(data => {
+                    //     if (data.code == 200)
+                    //     {                            
+                    //         Vue.$XModal.message({ message: `修改成功！`, status: 'success' })
+                    //         this.showEdit = false
+                    //     }
+                    //     else
+                    //         Vue.$XModal.message({ message: `修改失败：${data.msg}！`, status: 'error' })
+
+                    // }).catch(() => {
+                    //     Vue.$XModal.message({ message: '修改失败！', status: 'error' })
+                    // })
+
+                    //第二种方法：调用（用代理）                    
+                    this.$refs.xGrid.commitProxy('save')//调用代理
+                    this.showEdit = false
+                },
+                async removeEvent(row) {
+                    //第一种方法：获取行信息，调用后台删除、并删除前台
+                    // const type =await Vue.$XModal.confirm('您确定要删除该数据?') //confirm是异步的，一定要用await
+                    // if (type === 'confirm') {   
+                    //     var list = [row]
+                    //     return await XEAjax.post('../User/Delete', list).then(data => {                                               
+                    //         if (data.code == 200)
+                    //         {
+                    //             this.$refs.xGrid.remove(row)//删除前端表格
+                    //             Vue.$XModal.message({ message: `删除成功！`, status: 'success' })
+                    //         }
+                    //         else
+                    //             Vue.$XModal.message({ message: `删除失败：${data.msg}！`, status: 'error' })
+
+                    //     }).catch(() => {
+                    //         Vue.$XModal.message({ message: '删除失败！', status: 'error' })
+                    //     })
+                    // }
+
+                    //第二种方法：调用菜单删除的功能（用代理）
+                    this.$refs.xGrid.setCheckboxRow([row],true)//先做选中，只有选中才会被删除
+                    this.$refs.xGrid.commitProxy('delete')//调用代理删除
+                },
+                showHistoryEvent(row) {
+                    //这里切换到历史数据页面：
+                    self.location.href = "https://www.gdjtypt.com/device/JiaoBanZhuang_stat/Index?device_key=" + row['DeviceFacId']
+                },
+                importMethod({ file }) {
+                    // 处理表单
+                    const formBody = new FormData()
+                    formBody.append('file', file) //传到后台的文件
+                    formBody.append('picPath', "testv")//传到后台的参数
+                    // 上传文件
+                    //return XEAjax.post('https://api.xuliangzhan.com:10443/api/pub/import',
+                    return XEAjax.post('http://localhost:4498/Sender/import', formBody).then(data => {
+                        // this.$refs.XModal 也有问题
+                        this.$XModal.message({ message: `成功导入 ${data.result.insertRows} 条记录！`, status: 'success' })
+                        // 导入完成，刷新表格
+                        this.$refs.xGrid.commitProxy('query')
+                    }).catch(() => {
+                        this.$XModal.message({ message: '导入失败，请检查数据是否正确！', status: 'error' })
+                    })
+                },
+                exportMethod({ options }) { //提示：options里有当前页的数据，导出当前页的时候可以传递到后台。
+                    const proxyInfo = this.$refs.xGrid.getProxyInfo()
+                    // 传给服务端的参数
+                    const body = { //如果要导出所有页的数据（当前查询条件），那么需要把表单的数据也传递过去
+                        filename: options.filename,
+                        sheetName: options.sheetName,
+                        isHeader: options.isHeader,
+                        original: options.original,
+                        mode: options.mode,
+                        pager: proxyInfo.pager,
+                        ids: options.mode === 'selected' ? options.data.map(item => item.id) : [],
+                        fields: options.columns.map(column => {
+                            return {
+                                field: column.property,
+                                title: column.title
+                            }
+                        })
+                    }
+
+                    //1)这是一种导出方法，完全在服务器端生成
+                    var url = "ExportData?body=" + $.param(body);
+                    window.open(url); //导出并打开
+
+                    // 开始服务端导出：应该是分2步：1.先服务端生成xlsx文件存在服务器硬盘
+                    //2.调用并下载（服务端应该删除）
+                    //return XEAjax.post('https://api.xuliangzhan.com:10443/api/pub/export', body).then(data => {
+                    //    //return XEAjax.post('https://api.xuliangzhan.com:10443/api/pub/export', body).then(data => {
+                    //    //这里返回的data内容为：
+                    //    //id: 1612882826220
+                    //    //name: "导出_源_20210209225924.xlsx"
+                    //    //time: 1612882826220
+                    //    if (data.id) {
+                    //        this.$XModal.message({ message: '导出成功，开始下载', status: 'success' })
+                    //        // 读取路径，请求文件
+                    //        XEAjax.fetch(`https://api.xuliangzhan.com:10443/api/pub/export/download/${data.id}`).then(response => {
+                    //            response.blob().then(blob => {
+                    //                // 开始下载
+                    //                this.$XSaveFile({ filename: '导出数据', type: 'xlsx', content: blob })
+                    //            })
+                    //        })
+                    //    }
+                    //}).catch(() => {
+                    //    this.$XModal.message({ message: '导出失败！', status: 'error' })
+                    //})
+                },
+
+                //行颜色设置（后台传过来一个字段Color的值例如：'red'
+                rowStyle({ row, rowIndex }) {
+                    if (row.Color != null && row.Color != 'undefined' && row.Color != '' && row.Color != "black") {
+                        return {
+                            backgroundColor: row.Color, //背景色
+                            //color: '#ffffff' //字体 白色
+                        }
+                    }
+                },
+               
+                //表尾统计（这里目前是前台的统计，如果需要（分页）后台统计，那么参考例子调用后台
+                // footerMethod({ columns, data }) {
+                //     return [
+                //         columns.map((column, columnIndex) => {
+                //             if (columnIndex === 0) {
+                //                 return '和值'
+                //             }
+                //             if (['age', 'amount'].includes(column.property)) {
+                //                 return XEUtils.sum(data, column.property)
+                //             }
+                //             return null
+                //         }),
+                //         columns.map((column, columnIndex) => {
+                //             if (columnIndex === 0) {
+                //                 return '平均'
+                //             }
+                //             if (['age', 'amount'].includes(column.property)) {
+                //                 return XEUtils.mean(data, column.property)
+                //             }
+                //             return null
+                //         })
+                //     ]
+                // }
+            }
+
+        });
+        app.use(VxeUI).use(VXETable).mount('#app')       
+    </script>
+}
+
+
+@*特别注意：这里@@用到了2个@，正常html是一个@，因为cshtml @是绑定变量的意思，所以这里用2个@@
+单击是@@cell-click*@
+<div id="app">
+   
+    @*表格*@
+    <vxe-grid ref='xGrid'
+                v-bind="gridOptions"
+                :row-style="rowStyle" @*行样式（颜色）函数*@
+                @* :footer-method="footerMethod" *@ @*表尾统计*@
+                @@cell-dblclick="cellDBLClickEvent">
+    @*下面最好是写在js中*@
+    <template v-slot:operate="{ row }">
+        <vxe-button mode="text" icon="vxe-icon-edit" @@click="editEvent(row)"></vxe-button>
+        <vxe-button mode="text" icon="vxe-icon-delete" @@click="removeEvent(row)"></vxe-button>
+        @* <vxe-button @@click="showStatusEvent(row)">实时</vxe-button>
+        <vxe-button icon="fa fa-line-chart" title="查看曲线" circle @@click="showChartEvent(row)"></vxe-button> *@
+    </template>
+        <template v-slot:history="{ row }">
+            @* <vxe-button icon="fa fa-history" title="查看历史数据" circle @@click="showHistoryEvent(row)"></vxe-button> *@
+            @*<vxe-button @@click="showHistoryEvent(row)">历史</vxe-button>*@
+        </template>
+
+    </vxe-grid>
+    @*详情*@
+    <vxe-modal v-model="showDetails" title="查看详情" width="600" height="400" :mask="false" :lock-view="false" resize>
+        <template v-slot>
+            <vxe-table border="inner"
+                        auto-resize
+                        show-overflow @*列文字过长用省略号*@                        
+                        height="auto"
+                        :show-header="false"
+                        :sync-resize="showDetails"
+                        :data="detailData">
+                <vxe-table-column field="label" width="40%"></vxe-table-column>
+                <vxe-table-column field="value"></vxe-table-column>
+            </vxe-table>
+        </template>
+    </vxe-modal>
+    <vxe-modal v-model="showEdit" :title="selectRow ? '编辑&保存' : '新增&保存'" width="800" min-width="600" min-height="300" :loading="submitLoading" resize destroy-on-close>
+        <template #default>
+            <vxe-form :data="editFormData" :rules="editRules" title-align="right" title-width="100" @@submit="editSubmit">                
+                @* <vxe-form-item v-for="(value, key) in editFormData" :key="key" :field="key" ,title="key" :span="12" :item-render="{}">
+                    <vxe-input v-model="value" placeholder="请输入"></vxe-input>
+                </vxe-form-item> *@
+                <vxe-form-item field="username" title="用户名" :span="12" :item-render="{}">
+                    <template v-slot="{ data }">
+                        <vxe-input v-model="data.username" placeholder="请输入名称"></vxe-input>
+                    </template>
+                </vxe-form-item>
+                <vxe-form-item field="phone" title="phone" :span="12" :item-render="{}">
+                    <template v-slot="{ data }">
+                        <vxe-input v-model="data.phone" placeholder="请输入电话"></vxe-input>
+                    </template>
+                </vxe-form-item>
+                <vxe-form-item align="center" title-align="left" :span="24">
+                    <template #default>
+                        <vxe-button type="submit">提交</vxe-button>
+                        <vxe-button type="reset">重置</vxe-button>
+                    </template>
+                </vxe-form-item>
+            </vxe-form>
+        </template>
+    </vxe-modal>
+</div>
+
+

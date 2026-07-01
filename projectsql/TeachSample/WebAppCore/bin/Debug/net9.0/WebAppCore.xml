@@ -1,0 +1,1778 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAppCore</name>
+    </assembly>
+    <members>
+        <member name="M:WebAppCore.AutofacExtensions.AutofacModuleRegister.ModuleRegister(Autofac.ContainerBuilder)">
+            <summary>
+            /*****下面是按照模块注入的方法*****/
+             //调用程序集注册存入方法
+            </summary>
+        </member>
+        <member name="T:WebAppCore.AutofacExtensions.CustomClassInterceptor">
+            <summary>
+            类级别的拦截器，标注在要实现AOP功能的类型上。
+            </summary>
+        </member>
+        <member name="M:WebAppCore.AutofacExtensions.CustomClassInterceptor.Intercept(Castle.DynamicProxy.IInvocation)">
+             <summary>
+            
+             </summary>
+             <param name="invocation"></param>
+        </member>
+        <member name="T:WebAppCore.AutofacExtensions.CustomInterceptorSelector">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.AutofacExtensions.CustomInterceptorSelector.SelectInterceptors(System.Type,System.Reflection.MethodInfo,Castle.DynamicProxy.IInterceptor[])">
+             <summary>
+            
+             </summary>
+             <param name="type"></param>
+             <param name="method"></param>
+             <param name="interceptors">如果类型有标注拦截器，这里会获取所有拦截器。</param>
+             <returns></returns>
+        </member>
+        <member name="T:WebAppCore.AutofacExtensions.CustomInterfaceInterceptor">
+            <summary>
+            接口级别的拦截器，标注在要实现AOP功能的接口类型上。
+            </summary>
+        </member>
+        <member name="M:WebAppCore.AutofacExtensions.CustomInterfaceInterceptor.Intercept(Castle.DynamicProxy.IInvocation)">
+             <summary>
+            
+             </summary>
+             <param name="invocation"></param>
+        </member>
+        <member name="T:WebAppCore.AutofacExtensions.CustomPropertySelectorAttribute">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.#ctor(WebAppCore.Service.IAiAppService,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            构造器
+            </summary>	
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.Main">
+            <summary>
+            前端页面Main
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.DeepSeek">
+            <summary>
+            前端页面DeepSeek
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.DsBaiduMap">
+            <summary>
+            前端页面DsBaiduMap
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.DsCesium">
+            <summary>
+            前端页面DsCesium
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.DeepSeekReq(System.Int32,System.String)">
+            <summary>
+            DeepSeek请求，可以用AiChatReq来代替
+            </summary>
+            <param name="model"></param>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.AiChatReq(System.Int32,System.Int32,System.String)">
+            <summary>
+            AiChatReq 聊天请求
+            </summary>
+            <param name="company">AI提供公司，类型为AiCompany定义</param>
+            <param name="model">具体的模型</param>
+            <param name="question">要问的问题，目前这个接口只支持一个问题，本质上可以多个问题</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.AiAppController.UploadFile(System.String)">
+            <summary>
+            UploadFile是图像上传并理解的接口
+            </summary>
+            <param name="question">要问的问题</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.ApiController.#ctor(WebAppCore.Service.ISysApisService)">
+             <summary>
+            
+             </summary>	
+        </member>
+        <member name="M:WebAppCore.Controllers.ColorDiffController.#ctor(WebAppCore.Service.IColorDiffService)">
+             <summary>
+            
+             </summary>	
+        </member>
+        <member name="M:WebAppCore.Controllers.ConfigController.#ctor(WebAppCore.Service.ISysConfigsService)">
+             <summary>
+            
+             </summary>
+             <param name="radarRawData"></param>       
+        </member>
+        <member name="M:WebAppCore.Controllers.DeptController.#ctor(WebAppCore.Service.ISysDeptsService)">
+             <summary>
+            
+             </summary>
+             <param name="radarRawData"></param>       
+        </member>
+        <member name="M:WebAppCore.Controllers.DeptController.list">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.DictController.#ctor(WebAppCore.Service.ISysDictDatumService,WebAppCore.Service.ISysDictTypeService)">
+             <summary>
+            
+             </summary>
+             <param name="radarRawData"></param>       
+        </member>
+        <member name="M:WebAppCore.Controllers.FalldownDeviceController.#ctor(WebAppCore.Service.IFalldownDeviceService)">
+             <summary>
+            
+             </summary>		 
+        </member>
+        <member name="M:WebAppCore.Controllers.FalldownDeviceController.delete(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            支持一次性删除多个
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.FalldownLocationController.#ctor(WebAppCore.Service.IFalldownLocationService)">
+             <summary>
+            
+             </summary>		 
+        </member>
+        <member name="M:WebAppCore.Controllers.HomeController.#ctor(System.IServiceProvider,Autofac.IComponentContext,WebAppCore.DbModel.VueworkdbTeachContext)">
+             <summary>
+            
+             </summary>
+             <param name="person"></param>
+             <param name="serviceProvider">服务提供器，类型是 AutofacServiceProvider，获取类型。</param>
+             <param name="componentContext">autofac 的上下文对象，可以获取容器中的服务。</param>
+        </member>
+        <member name="M:WebAppCore.Controllers.LoginController.#ctor(WebAppCore.Service.IAiAppService,WebAppCore.Service.ISysUsersService)">
+             <summary>
+            
+             </summary>	
+        </member>
+        <member name="M:WebAppCore.Controllers.LoginController.login(WebAppCore.ViewModels.LoginReq)">
+            <summary>
+            下面这个不用了
+            </summary>
+            <param name="req"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.MenuController.#ctor(WebAppCore.Service.ISysMenusService)">
+             <summary>
+            
+             </summary>
+             <param name="ISysMenuService"></param>       
+        </member>
+        <member name="M:WebAppCore.Controllers.PostController.#ctor(WebAppCore.Service.ISysPostsService)">
+             <summary>
+            
+             </summary>
+             <param name="radarRawData"></param>       
+        </member>
+        <member name="T:WebAppCore.Controllers.PropertyInjectionController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Controllers.PropertyInjectionController.#ctor(WebAppCore.Service.Samples.IPropertyPerson)">
+             <summary>
+            
+             </summary>
+             <param name="propertyPerson"></param>
+        </member>
+        <member name="M:WebAppCore.Controllers.PropertyInjectionController.Index">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.QueryInfoController.#ctor(System.IServiceProvider,Autofac.IComponentContext,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,WebAppCore.Service.IQueryInfoService)">
+             <summary>
+            
+             </summary>       
+             <param name="serviceProvider">服务提供器，类型是 AutofacServiceProvider，获取类型。</param>
+             <param name="componentContext">autofac 的上下文对象，可以获取容器中的服务。</param>
+        </member>
+        <member name="M:WebAppCore.Controllers.RoleController.#ctor(WebAppCore.Service.ISysRolesService)">
+             <summary>
+            
+             </summary>
+             <param name="ISysRolesService"></param>       
+        </member>
+        <member name="M:WebAppCore.Controllers.UserController.#ctor(WebAppCore.Service.ISysUsersService,WebAppCore.Service.AuthService)">
+             <summary>
+            
+             </summary>
+             <param name="sys_users"></param>       
+        </member>
+        <member name="M:WebAppCore.Controllers.UserController.login_Old(WebAppCore.ViewModels.LoginReq)">
+            <summary>
+            这个接口目前不再使用
+            </summary>
+            <param name="req"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Controllers.UserController.IndexVxe">
+            <summary>
+            Bootstrap前端页面
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:WebAppCore.DbExtensions.DbHelper" -->
+        <member name="M:WebAppCore.DbExtensions.DbHelper.SqlQuery``1(Microsoft.EntityFrameworkCore.DbContext,System.String,System.Object[])">
+            <summary>
+            执行SQL
+            </summary>
+            <typeparam name="TResult">返回的对象</typeparam>
+            <param name="context">上下文</param>
+            <param name="sql">原生SQL</param>
+            <param name="parameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.DbExtensions.PredicateExtensions">
+            <summary>
+            拼接linq
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.DynamicInfo.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.DynamicInfo.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.DynamicInfo.Label">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.DynamicInfo.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownDevice.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownDevice.Model">
+            <summary>
+            型号
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownDevice.ContactPhones">
+            <summary>
+            家属电话
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownDevice.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownDevice.Flag">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownLocation.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownLocation.Lon">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.FalldownLocation.Lat">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.Ipaddr">
+            <summary>
+            ip地址
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.LoginLocation">
+            <summary>
+            归属地
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.Browser">
+            <summary>
+            浏览器
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.Os">
+            <summary>
+            系统
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.Platform">
+            <summary>
+            固件
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.LoginTime">
+            <summary>
+            登录时间
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogLogin.UpdateBy">
+            <summary>
+            更新者
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.Title">
+            <summary>
+            操作的模块
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.BusinessType">
+            <summary>
+            0其它 1新增 2修改 3删除
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.Method">
+            <summary>
+            请求方法
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.OperName">
+            <summary>
+            操作人员
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.OperUrl">
+            <summary>
+            操作url
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.OperIp">
+            <summary>
+            操作IP
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.OperLocation">
+            <summary>
+            操作地点
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.OperParam">
+            <summary>
+            请求参数
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.LogOper.Status">
+            <summary>
+            0=正常,1=异常
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.queryinfo.User">
+            <summary>
+            查询的用户
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.queryinfo.QueryStock">
+            <summary>
+            输入的查询股票
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.queryinfo.RespStocks">
+            <summary>
+            返回的股票
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.queryinfo.RespStockDate">
+            <summary>
+            返回的股票交易（产生）日期
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.queryinfo.QueryTime">
+            <summary>
+            查询日期时间
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarFeatureDatum.SrcId">
+            <summary>
+            预处理数据id
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarFeatureDatum.Name">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarFeatureDatum.Path">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarFeatureDatum.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarFeatureDatum.Size">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarFeatureDatum.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarFeatureDatum.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarPreprocessDatum.RawId">
+            <summary>
+            原始数据id
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarPreprocessDatum.Name">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarPreprocessDatum.Path">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarPreprocessDatum.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarPreprocessDatum.Size">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarPreprocessDatum.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarPreprocessDatum.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarRawDatum.Name">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarRawDatum.Path">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarRawDatum.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarRawDatum.Size">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarRawDatum.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarRawDatum.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarStatistic.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarStatistic.Oprtype">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarStatistic.Num">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarStatistic.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.RadarStatistic.Statdate">
+            <summary>
+            统计日期
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.stockrecom.StockCode">
+            <summary>
+            股票代码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.stockrecom.StockName">
+            <summary>
+            股票名称
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.stockrecom.StockField">
+            <summary>
+            所属行业
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.stockrecom.StockScore">
+            <summary>
+            总分
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysApi.Path">
+            <summary>
+            api路径
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysApi.Description">
+            <summary>
+            api中文描述
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysApi.ApiGroup">
+            <summary>
+            api组
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysApi.Method">
+            <summary>
+            方法
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysConfig.ConfigId">
+            <summary>
+            主键编码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysConfig.ConfigName">
+            <summary>
+            ConfigName
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysConfig.ConfigKey">
+            <summary>
+            ConfigKey
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysConfig.ConfigValue">
+            <summary>
+            ConfigValue
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysConfig.ConfigType">
+            <summary>
+            是否系统内置0，1
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysConfig.IsFrontend">
+            <summary>
+            是否前台
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysConfig.Remark">
+            <summary>
+            Remark
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.ParentId">
+            <summary>
+            上级部门
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.DeptPath">
+            <summary>
+            部门路径
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.DeptName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.Leader">
+            <summary>
+            负责人
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.Phone">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDept.UpdateBy">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.DictSort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.DictLabel">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.DictValue">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.DictType">
+            <summary>
+            字典类型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.Status">
+            <summary>
+            状态（0正常 1停用）
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.CssClass">
+            <summary>
+            CssClass
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.ListClass">
+            <summary>
+            ListClass
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.IsDefault">
+            <summary>
+            IsDefault
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictDatum.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictType.DictName">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictType.DictType">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictType.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysDictType.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysMenu.IsAffix">
+            <summary>
+            是否登录后固定显示在页面顶部sheet
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysPost.PostName">
+            <summary>
+            岗位名称
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysPost.PostCode">
+            <summary>
+            岗位代码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysPost.Sort">
+            <summary>
+            岗位排序
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysPost.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysPost.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysRole.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysRole.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysRole.RoleKey">
+            <summary>
+            角色代码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysRole.DataScope">
+            <summary>
+            数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysRole.RoleSort">
+            <summary>
+            角色排序
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysRole.Flag">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysUser.RoleIds">
+            <summary>
+            多角色
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.SysUser.PostIds">
+            <summary>
+            多岗位
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.sys_user.role_ids">
+            <summary>
+            多角色
+            </summary>
+        </member>
+        <member name="P:WebAppCore.DbModel.sys_user.post_ids">
+            <summary>
+            多岗位
+            </summary>
+        </member>
+        <member name="T:WebAppCore.Service.AiAppService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.AuthService.GenerateToken(WebAppCore.ViewModels.AuthUser)">
+            <summary>
+            用于令牌的生成
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.Service.ColorDiffService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.FalldownDeviceService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.FalldownDeviceService.DeleteTableData(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.Service.FalldownLocationService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.IAiAppService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.IAiAppService.CallAiApi(WebAppCore.ViewModels.DeepSeek.AiCompany,System.Int32,System.String,System.String)">
+            <summary>
+            通用的AI接口调用，如果imagePath不为null或者空，那么表示图像理解，否则是回答问题
+            </summary>
+            <param name="type"></param>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.Service.IColorDiffService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.IFalldownDeviceService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.IFalldownLocationService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.IQueryInfoService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.ISysApisService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.ISysConfigsService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.ISysConfigsService.GetTableData(System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.ISysDeptsService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.ISysDeptsService.GetDeptTree">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.ISysDictDatumService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.ISysDictDatumService.GetDicts(System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.ISysDictTypeService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.ISysDictTypeService.GetTableData(System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.ISysMenusService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.ISysPostsService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.ISysPostsService.GetTableData(System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.ISysRolesService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.ISysRolesService.GetTableData(System.Int32,System.Int32,WebAppCore.ViewModels.SysRolesModel)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.ISysUsersService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.ISysUsersService.GetCaptcha(System.String@)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.QueryInfoService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.Samples.AOPClassPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.AOPClassPerson.ProcessAOP">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.AOPClassPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.AOPPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.AOPPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.AOPPerson.ProcessTwo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.AOPPerson.ProcessThree">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.IAOPClassPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IAOPClassPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IAOPClassPerson.ProcessAOP">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.IAOPPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IAOPPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IAOPPerson.ProcessTwo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IAOPPerson.ProcessThree">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.IPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IPerson.Eat(System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.IPropertyPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IPropertyPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IPropertyPerson.ProcessTwo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IPropertyPerson.ProcessThree">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.IPropertyTwoPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IPropertyTwoPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IPropertyTwoPerson.ProcessTwo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.IPropertyTwoPerson.ProcessThree">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.PropertyPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.PropertyPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.PropertyPerson.ProcessTwo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.PropertyPerson.ProcessThree">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.PropertyTwoPerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.PropertyTwoPerson.Process">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.PropertyTwoPerson.ProcessTwo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.PropertyTwoPerson.ProcessThree">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.Samples.SinglePerson">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:WebAppCore.Service.Samples.SinglePerson.Eat(System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:WebAppCore.Service.SysApisService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.SysConfigsService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.SysDeptsService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.SysDeptsService.GetSubDepts(System.Collections.Generic.List{WebAppCore.ViewModels.SysDeptsModel}@,System.Collections.Generic.List{WebAppCore.DbModel.SysDept},System.Int64)">
+            <summary>
+            递归生成json格式的部门树，特别注意第一个参数要用ref
+            </summary>
+            <param name="target"></param>
+            <param name="src"></param>
+            <param name="ParentId"></param>
+        </member>
+        <member name="T:WebAppCore.Service.SysDictDatumService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.SysDictDatumService.GetDicts(System.String)">
+            <summary>
+            根据字典类型获取字典
+            </summary>
+            <param name="dictType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.Service.SysDictTypeService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="T:WebAppCore.Service.SysMenusService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.SysMenusService.GetSubMenus(System.Collections.Generic.List{WebAppCore.ViewModels.SysMenusModel}@,System.Collections.Generic.List{WebAppCore.DbModel.SysMenu},System.Int64)">
+            <summary>
+            递归生成json格式的树菜单，特别注意第一个参数要用ref
+            这个有点慢。
+            </summary>
+            <param name="target"></param>
+            <param name="src"></param>
+            <param name="parentMenuId"></param>
+        </member>
+        <member name="M:WebAppCore.Service.SysMenusService.GetSubTreeMenus(System.Collections.Generic.List{WebAppCore.ViewModels.menusSelect}@,System.Collections.Generic.List{WebAppCore.DbModel.SysMenu},System.Int64)">
+            <summary>
+            递归生成json格式的树菜单，特别注意第一个参数要用ref
+            这个有点慢。
+            </summary>
+            <param name="target"></param>
+            <param name="src"></param>
+            <param name="CurrentMenuId"></param>
+        </member>
+        <member name="M:WebAppCore.Service.SysMenusService.DeleteTableData(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.Service.SysPostsService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.SysPostsService.GetPosts(WebAppCore.ViewModels.SysPostsModel)">
+            <summary>
+            
+            </summary>
+            <param name="post">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.Service.SysRolesService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.SysRolesService.GetRoles(WebAppCore.ViewModels.SysRolesModel)">
+            <summary>
+            
+            </summary>
+            <param name="post">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAppCore.Service.SysUsersService">
+             <summary>
+            
+             </summary>   
+        </member>
+        <member name="M:WebAppCore.Service.SysUsersService.GetCaptcha(System.String@)">
+             <summary>
+            
+             </summary>
+             
+        </member>
+        <member name="M:WebAppCore.Service.SysUsersService.Login(WebAppCore.ViewModels.LoginReq,System.String,MyTool.TokenInfo@)">
+            <summary>
+            这个是旧的，可以产生token
+            </summary>
+            <param name="req"></param>
+            <param name="sessionCode"></param>
+            <param name="ti"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Service.SysUsersService.checkReqCode(WebAppCore.ViewModels.LoginReq,System.String,WebAppCore.ViewModels.LoginRes@)">
+            <summary>
+            验证码验证比对
+            其实有2种方法：
+            1.利用传过来的传输中用户输入req.captcha（未编码）和req.captchaId(base64编码返回的值直接验证比较（当然要转码）
+            2.利用传过来的传输中用户输入req.captcha（未编码）和后台session存的进行比较（不用要转码）
+            下面就用的是2
+            </summary>
+            <param name="req"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAppCore.Service.SysUsersService.GetSubMenus(System.Collections.Generic.List{WebAppCore.ViewModels.Menu}@,System.Collections.Generic.List{WebAppCore.DbModel.SysMenu},System.Int64)">
+            <param name="target"></param>
+            <param name="src"></param>
+            <param name="parentMenuId"></param>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.DeepSeekConst.fieldTemps">
+            <summary>
+            领域——温度
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.DeepSeek.ReqMessage">
+            <summary>
+            下面是请求对话内容
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.ReqMessage.role">
+            <summary>
+            role: 指定消息的角色，可能值为
+            system: 设置对话的上下文或指示（如“您是帮助用户的助手”）
+            user: 用户输入的内容（如“Hello!”）
+            assistant: 模型的回复（通常由 API 自动生成，不需要手动设置）
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.ReqMessage.content">
+            <summary>
+            content: 消息的具体内容。
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.ReqImageMessage.role">
+            <summary>
+            role: 指定消息的角色，可能值为
+            system: 设置对话的上下文或指示（如“您是帮助用户的助手”）
+            user: 用户输入的内容（如“Hello!”）
+            assistant: 模型的回复（通常由 API 自动生成，不需要手动设置）
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.ReqImageMessage.content">
+            <summary>
+            content: 消息的具体内容。
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.RequestImage.model">
+            <summary>
+            model是调用的模型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.RequestImage.messages">
+            <summary>
+            messages是一个数组，用于定义对话内容。
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.RequestImage.temperature">
+            <summary>
+            temperature 参数默认为 1.0
+            建议您根据如下表格，按使用场景设置 temperature
+            场景					温度
+            代码生成/数学解题   	0.0
+            数据抽取/分析			1.0
+            通用对话				1.3
+            翻译					1.3
+            创意类写作/诗歌创作		1.5
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.RequestImage.stream">
+            <summary>
+            stream: 是否启用流式传输。默认为 false，表示不启用流式传输。如果设置为 true，API 会实时返回生成内容，适合需要实时Interaction的场景
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.Request.model">
+            <summary>
+            model是调用的模型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.Request.messages">
+            <summary>
+            messages是一个数组，用于定义对话内容。
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.Request.temperature">
+            <summary>
+            temperature 参数默认为 1.0
+            建议您根据如下表格，按使用场景设置 temperature
+            场景					温度
+            代码生成/数学解题   	0.0
+            数据抽取/分析			1.0
+            通用对话				1.3
+            翻译					1.3
+            创意类写作/诗歌创作		1.5
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.DeepSeek.Request.stream">
+            <summary>
+            stream: 是否启用流式传输。默认为 false，表示不启用流式传输。如果设置为 true，API 会实时返回生成内容，适合需要实时Interaction的场景
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.DeepSeek.Response">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.Claude.ReqMessage">
+            <summary>
+            下面是请求对话内容
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.Claude.ReqMessage.role">
+            <summary>
+            role: 指定消息的角色，可能值为
+            system: 设置对话的上下文或指示（如“您是帮助用户的助手”）
+            user: 用户输入的内容（如“Hello!”）
+            assistant: 模型的回复（通常由 API 自动生成，不需要手动设置）
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.Claude.ReqMessage.content">
+            <summary>
+            content: 消息的具体内容。
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.Claude.ClaudeRequest.model">
+            <summary>
+            model是调用的模型
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.Claude.ClaudeRequest.messages">
+            <summary>
+            messages是一个数组，用于定义对话内容。
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.Claude.ClaudeRequest.temperature">
+            <summary>
+            temperature 参数默认为 1.0
+            建议您根据如下表格，按使用场景设置 temperature
+            场景					温度
+            代码生成/数学解题   	0.0
+            数据抽取/分析			1.0
+            通用对话				1.3
+            翻译					1.3
+            创意类写作/诗歌创作		1.5
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.Claude.ClaudeRequest.stream">
+            <summary>
+            stream: 是否启用流式传输。默认为 false，表示不启用流式传输。如果设置为 true，API 会实时返回生成内容，适合需要实时Interaction的场景
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.Claude.ClaudeResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.JqGridTable`1">
+            <summary>
+            返回的最外层消息定义
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:WebAppCore.ViewModels.JqGridTable`1.total">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.JqGridTable`1.page">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.JqGridTable`1.records">
+            <summary>
+            记录总数
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.JqGridTable`1.rows">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.AuthUser">
+            <summary>
+            用于存储到token中的数据
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.TokenParse">
+            <summary>
+            token解析结果
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.QueryInfoModel">
+             <summary>
+             注意去寻找model的写法，很多新的 helm
+            
+             </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.QueryInfoModel.User">
+            <summary>
+            查询的用户
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.QueryInfoModel.QueryStock">
+            <summary>
+            输入的查询股票
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.QueryInfoModel.RespStocks">
+            <summary>
+            返回的股票
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.QueryInfoModel.RespStockDate">
+            <summary>
+            返回的股票交易（产生）日期
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.QueryInfoModel.QueryTime">
+            <summary>
+            查询日期时间
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.StockRecomModel">
+             <summary>
+             注意去寻找model的写法，很多新的 helm
+            
+             </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.StockRecomModel.StockCode">
+            <summary>
+            股票代码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.StockRecomModel.StockName">
+            <summary>
+            股票名称
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.StockRecomModel.StockField">
+            <summary>
+            所属行业
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.StockSearchResult.StockCode">
+            <summary>
+            股票代码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.StockSearchResult.StockName">
+            <summary>
+            股票名称
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.SysUsersModel.roleIds">
+            <summary>
+            多角色
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.SysUsersModel.postIds">
+            <summary>
+            多岗位
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.CheckCodeRes">
+            <summary>
+            验证码返回数据
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.VueResMsg`1">
+            <summary>
+            返回的最外层消息定义
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VueResMsg`1.code">
+            <summary>
+            返回消息编码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VueResMsg`1.msg">
+            <summary>
+            消息提示
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VueResMsg`1.data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:WebAppCore.ViewModels.VueResMsg`1.SetOK(System.String)">
+            <summary>
+            这个是针对我们的前端vue项目的要求
+            </summary>
+        </member>
+        <member name="T:WebAppCore.ViewModels.VueTable`1">
+            <summary>
+            下面是自带表格的数据返回定义
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VueTable`1.data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VueTable`1.pageSize">
+            <summary>
+            每页记录数量
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VueTable`1.pageNum">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VueTable`1.total">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.page.pageSize">
+            <summary>
+            每页记录数量
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.page.currentPage">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.page.total">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VxeGridTable`1.page">
+            <summary>
+            页信息
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.VxeGridTable`1.result">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:WebAppCore.ViewModels.ImportResult.insertRows">
+            <summary>
+            成功行数
+            </summary>
+        </member>
+        <member name="T:MyTool.CheckCode">
+            <summary>
+            生成验证码和图片
+            </summary>
+        </member>
+        <member name="M:MyTool.CheckCode.MakeCode(System.Int32)">
+            <summary>
+            生成随机验证码数字+字母
+            </summary>
+            <param name="codelen">验证码长度</param>
+            <returns>返回验证码</returns>
+        </member>
+        <member name="M:MyTool.CheckCode.CheckCodeImage(System.String,SixLabors.ImageSharp.Formats.IImageFormat)">
+            <summary>
+            ImageSharp是对.NET Core平台扩展的一个图像处理方案，以往网上的案例多以生成文字及画出简单图形、验证码等方式进行探讨和实践。
+            </summary>
+            <param name="CheckCode"></param>
+            <param name="imgType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.CodingUtil.StringToUnicode(System.String)">
+            <summary>
+            字符串转Unicode码
+            </summary>
+            <returns>The to unicode.</returns>
+            <param name="value">Value.</param>
+        </member>
+        <member name="M:MyTool.CodingUtil.UnicodeToString(System.String)">
+            <summary>
+            Unicode转字符串
+            </summary>
+            <returns>The to string.</returns>
+            <param name="unicode">Unicode.</param>
+        </member>
+        <member name="M:MyTool.CodingUtil.BytesToStruct``1(System.Byte[],System.Type)">
+            <summary>
+            Bytes转结构体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="bytes"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.FileHelper.ReaderLinesFromFile(System.String,System.Int32,System.Int32)">
+            <summary>
+            读取结果是字符串
+            </summary>
+            <param name="filename"></param>
+            <param name="startLine">起始行，从0开始算</param>
+            <param name="linecount">读取的行数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.FileHelper.ReaderLinesArrayFromFile(System.String,System.Int32,System.Int32)">
+            <summary>
+            读取结果List
+            </summary>
+            <param name="filename"></param>
+            <param name="startLine">起始行，从0开始算</param>
+            <param name="linecount">读取的行数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.FileHelper.ReaderLinesByGap(System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="filename"></param>
+            <param name="gap">跳过几个</param>
+            <param name="skip">前面几行不要参与</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.FileHelper.GetTotalLines(System.String)">
+            
+        </member>
+        <member name="M:MyTool.LogUtil.GetLogFileSize(System.String)">
+            <summary>
+            下面方法还有问题
+            </summary>
+        </member>
+        <member name="M:MyTool.LogUtil.date2FileName(System.DateTime)">
+            <summary>
+            日期格式：2018/8/17 12:17:37
+            删除  / 空格 : 3种字符
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.MathUtil.GetRandom(System.Int32,System.Int32)">
+            <summary>
+            获取指定区间的随机数
+            </summary>
+            <param name="min">The minimum.</param>
+            <param name="max">The maximum.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.MathUtil.GetRandomSeed">
+            <summary>
+            加密随机数生成器 生成随机种子
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:MyTool.MD5Util.MD5Encrypt16(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:MyTool.MD5Util.MD5Encrypt32(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:MyTool.MD5Util.MD5Encrypt64(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:MyTool.MD5Util.Md5Encrypt_Key(System.String,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:MyTool.MD5Util.Md5Decrypt(System.String,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:MyTool.MD5Util.GenerateMD5(System.IO.Stream)" -->
+        <member name="M:MyTool.StringUtil.GetSocketString(System.String)">
+            <summary>
+            去掉socket收到的数据两边的\0和空格
+            </summary>
+            <param name="src"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyTool.TokenHelper">
+            <summary>
+            这里没有expire？
+            </summary>
+        </member>
+        <member name="M:MyTool.TokenHelper.GenToken(MyTool.TokenInfo)">
+            <summary>
+            生成Token
+            </summary>
+            <param name="M"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.TokenHelper.DecodeToken(System.String)">
+            <summary>
+            验证Token
+            token:来自前台的请求带的token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.TokenHelper.DecodeToken(System.String,System.String,System.String@)">
+            <summary>
+            验证Token
+            token:来自前台的请求带的token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Repository.BaseRepository`2.LoadEntities``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="whereLambda">null 表示全部都查</param>
+            <param name="orderbyLambda"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Repository.BaseRepository`2.GetContext">
+            <summary>
+            helm add 2024.03.12
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

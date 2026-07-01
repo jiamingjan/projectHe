@@ -1,0 +1,143 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Contacts";
+    Layout = "~/Views/Shared/_Layout_Old.cshtml";
+}
+
+
+@section CSS{
+    <link href="~/lib/old/css/style.css" rel="stylesheet" />
+    <link href="~/lib/old/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/old/css/animate.css" rel="stylesheet" />
+    <link href="~/lib/old/css/font-awesome.min.css" rel="stylesheet" />
+   
+    <style>
+        body {
+            padding: 10px 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        label.xreuired before {
+            content: '* ';
+            color: red;
+        }
+
+        table, tr, td {
+            width: 100%;
+            border: 1px solid #B3B4BA;
+            padding-left: 5px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        td {
+            width: 25%;
+            text-align: left;
+        }
+
+            td:nth-child(odd) {
+                background: #f9f9f9;
+            }
+    </style>
+}
+@section JS{
+    <script src="~/lib/old/js/plugins/layer/laydate/laydate.js"></script>
+   
+    <script src="~/lib/old/js/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+    <script src="~/lib/old/js/jquery.min.js"></script>
+    <script src="~/lib/old/js/bootstrap.min.js"></script>
+    <script src="~/lib/old/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="~/lib/old/js/jquery-ui.custom.min.js"></script>
+    <script src="~/lib/old/js/content.js"></script>
+
+    
+
+
+    <!--/coolie-->
+    <!--pace 进度条,如果不想全部页面都使用，请别放在公共部分-->
+    <!--<script src="/static/js/plugins/pace/pace.min.js"></script>-->
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.contact-box').each(function () {
+                animationHover(this, 'pulse');
+            });
+        });
+    </script>
+    
+}
+
+@section Body{
+    <body class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="contact-box">
+                        <a href="/profile/">
+                            <div class="col-sm-4">
+                                <div class="text-center">
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="~/lib/old/Images/admin.png">
+                                    <div class="m-t-xs font-bold">CTO</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <h3><strong>张三</strong></h3>
+
+                                <p><i class="fa fa-map-marker"></i> 浙江·杭州</p>
+                                <address>
+                                    <strong>xxxx信息科技有限公司</strong><br>
+                                    E-mail:xxx@baidu.com<br>
+                                    Weibo:<a href="/contacts/">http://weibo.com/xxx</a><br>
+                                    <abbr title="Phone">Tel:</abbr> (0571) 3456-7890
+                                </address>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact-box">
+                        <a href="/profile/">
+                            <div class="col-sm-4">
+                                <div class="text-center">
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="~/lib/old//Images/user.png">
+
+                                    <div class="m-t-xs font-bold">维护人员</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <h3><strong>李四</strong></h3>
+
+                                <p><i class="fa fa-map-marker"></i> 安徽·合肥</p>
+                                <address>
+                                    <strong>xxxx信息科技有限公司</strong><br>
+                                    E-mail:xxx@taobao.com<br>
+                                    Weibo:<a href="/contacts/">http://weibo.com/xxx</a><br>
+                                    <abbr title="Phone">Tel:</abbr> (05xx) 456-7890
+                                </address>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--coolie-->
+
+      
+
+
+    </body>
+}

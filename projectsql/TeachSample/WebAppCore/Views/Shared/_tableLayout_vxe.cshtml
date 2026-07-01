@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title </title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+
+        <link rel="stylesheet" href="~/lib/old/css/bootstrap.min.css" />
+        <link href="~/lib/vue-vxe/css/vxe-table/index4.13.23.css" rel="stylesheet" />        
+        <link href="~/lib/vue-vxe/css/vxe-pc-ui/style4.6.1.css" rel="stylesheet" />
+   
+
+    @* <link href="https://unpkg.com/vxe-pc-ui@4/lib/style.css" rel="stylesheet" /> *@
+    @* <link href="https://unpkg.com/vxe-table@4.13.23/lib/style.css" rel="stylesheet" /> *@
+
+
+    @RenderSection("CSS", false)
+    </head>
+
+<body class="gray-bg">
+    @RenderBody()
+</body>
+</html>
+
+
+<!-- 全局js -->
+@* <script src="https://unpkg.com/vue@3"></script> 
+<script src="https://unpkg.com/xe-utils"></script>
+<script src="https://unpkg.com/vxe-pc-ui@4"></script>
+<script src="https://unpkg.com/vxe-table@4"></script> 
+<script src="https://unpkg.com/vxe-table-plugin-export-xlsx"></script>
+<script src="https://unpkg.com/vxe-table-plugin-export-pdf"></script>
+ <script src="https://unpkg.com/xe-ajax"></script> *@
+
+<script src="~/lib/vue-vxe/js/vue/vue.global.prod.min.js"></script>
+<script src="~/lib/vue-vxe/js/xe/xe-utils.umd.min3.7.4.js"></script>
+<script src="~/lib/vue-vxe/js/vxe-pc-ui/index.umd4.6.1.js"></script>
+<script src="~/lib/vue-vxe/js/vxe/vxe-table4.13.23.js"></script>
+<script src="~/lib/vue-vxe/js/vxe/vxe-table-plugin-export-xlsx4.0.7.js"></script>
+<script src="~/lib/vue-vxe/js/vxe/vxe-table-plugin-export-pdf4.0.4.js"></script>
+<script src="~/lib/vue-vxe/js/axios/axios.min.js"></script>
+<script src="~/lib/vue-vxe/js/xe/xe-ajax.umd.min4.0.5.js"></script>
+<script src="~/lib/old/js/MyTool.js"></script>
+<script src="~/lib/old/js/js.cookie.min.js"></script>
+
+<script type="text/javascript">
+    //下面访问后台可以选择axios或者xe-ajax，都可以，
+    // 创建axios实例时配置默认值
+    const AXios = axios.create({
+        baseURL: ''
+    });
+    // 创建实例后修改默认值，axios带上拦截器请求头
+        AXios.defaults.headers.common['Authorization'] = `Bearer ${Cookies.get('token')}`;
+
+    //XEAjax
+    XEAjax.setup({
+    // 除非 url 是绝对路径（'/api/list' 或 '//test.com/api/list' 或 'https://test.com/api/list'），
+    // 否则 baseURL 会拼接在 url 之前
+    baseURL: '',
+    bodyType: 'json-data',
+    credentials: 'include',
+    headers: {
+    'Accept': 'application/json, text/plain, \*/\*;',
+    'Authorization':`Bearer ${Cookies.get('token')}`,
+    }    
+})
+
+
+</script>
+
+@RenderSection("JS", false)

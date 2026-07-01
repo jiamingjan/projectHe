@@ -1,0 +1,13 @@
+# 本地环境
+ENV = 'development'
+
+# 本地环境接口地址
+#old one
+# VITE_API_URL = 'http://127.0.0.1:7788'
+# VITE_API_URL = 'http://localhost:7789'
+# VITE_API_URL = 'http://103.145.39.46:8080'
+# 注意：1.http://localhost:7789/api这个地址是访问后台的，
+#2.这里要带个'/api'，因为vite.config.ts里面配置的proxy用这个进行匹配，然后根据rewrite去掉api，就用代理的地址来访问后台了
+ VITE_API_URL = 'http://localhost:7789/api'
+#vxe-table使用的：
+VITE_API_URL2 = 'https://www.gdjtypt.com/MyDevice'

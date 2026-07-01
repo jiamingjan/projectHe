@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "EditDataPanel";
+    Layout = "~/Views/Shared/_Layout_Old.cshtml";
+}
+@using WebAppCore.ViewModels
+@using System.Collections.Generic
+
+@section CSS{
+    <link rel="stylesheet" href="~/lib/old/css/bootstrap.min.css" />
+    <style>
+        body {
+            padding: 10px 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        table, tr, td {
+            width: 100%;
+            border: 1px solid #B3B4BA;
+            padding-left: 5px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        td {
+            width: 25%;
+            text-align: left;
+        }
+
+            td:nth-child(odd) {
+                background: #f9f9f9;
+            }
+    </style>
+}
+@section JS{
+    <script src="~/lib/old/js/MyTool.js"></script>
+    <script src="~/lib/old/js/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="~/lib/old/js/plugins/layer/laydate/laydate.js"></script>
+    <script>
+        $('#cancelBtn').bind('click', function () {
+            //window.parent.document.getElementById("ifr").style.display = "none";
+            //parent.layui.admin.events.closeThisTabs();
+            //var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            //parent.layer.close(index);
+            //parent.layer.closeAll('iframe');
+        });
+
+        $('#saveBtn').bind('click', function () {
+            var tool = new MyTool();
+            var id = tool.getUrlParam("Id");
+            var url;
+            var opr;
+            var param = $("#contentForm").serialize();
+            //alert(param);
+            if (id == null || id == "0") {
+                url = "AddTableData";//insert
+                opr = "新增";
+            }
+            else {
+                url = "UpdateTableData";//update
+                param = param + "&Id=" + id; //添加id
+                opr = "修改";
+            }
+            $.ajax(
+                {
+                    url: url,
+                    type: "GET",
+                    async: false,
+                    data: param,
+                    success: function (data) {
+                        var json = $.parseJSON(data);
+                        if (json.result == 'success') {
+                            alert(opr + '成功！');
+                            parent.$('#searchBtn').click();
+                        }
+                        else {
+                            alert(opr + "失败！");
+                            // $("#Info").html("删除失败");
+                        }
+                    }
+                });
+        });
+    </script>
+}
+
+@section Body{
+    <body>
+        @*<form class="form-inline" id="contentForm">*@
+        <form class="form-horizontal" id="contentForm" role="form">
+            @{
+                /**/
+
+                /**/
+
+                StockRecomModel DetailData = ViewBag.DetailData;
+            }
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">股票编号</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="StockCode" name="StockCode" type="text" value="@DetailData.StockCode" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">股票名称</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="StockName" name="StockName" type="text" value="@DetailData.StockName" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">行业</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="StockField" name="StockField" type="text" value="@DetailData.StockField">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">总分</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="StockScore" name="StockScore" type="text" value="@DetailData.StockScore">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">股票日期</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="StockDate" name="StockDate" type="text" value="@DetailData.StockDate" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">上传时间<span style="color:red;"> </span></label>
+                <div class="col-sm-10">
+                    <input readonly class="form-control" placeholder="上传时间" id="UpdateTime" name="UpdateTime" value="@DetailData.UpdateTime">
+                </div>
+            </div>            
+
+            <div style="position:absolute;right:21px;">
+                <button type="button" id="saveBtn" class="btn btn-w-m btn-success" style="margin-left: 10px;">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+            </div>
+
+            @*<div style="position:absolute;right:5px;bottom:15px;width:100px;border:0px solid #aaa">
+                    <button type="button" id="saveBtn" class="btn btn-default btn-success">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                    </button>
+                </div>*@
+            @*<div style="position:absolute;right:5px;bottom:15px;width:100px;border:0px solid #aaa">
+                    <button type="button" id="cancelBtn" class="btn btn-default btn-warning">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>取消
+                    </button>
+                </div>*@
+
+        </form>
+
+    </body>
+}

@@ -1,0 +1,205 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebAppCore
+build_property.RootNamespace = WebAppCore
+build_property.ProjectDir = D:\projectManage\projectsql\TeachSample\WebAppCore\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\projectManage\projectsql\TeachSample\WebAppCore
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/AiApp/DeepSeek.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlBcHBcRGVlcFNlZWsuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/AiApp/DsBaiduMap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlBcHBcRHNCYWlkdU1hcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/AiApp/DsCesium.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlBcHBcRHNDZXNpdW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Home/DashBoard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoQm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Home/IndexVue.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleFZ1ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Home/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/Contacts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cQ29udGFjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/EditDataPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRWRpdERhdGFQYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/IndexCaptcha.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXhDYXB0Y2hhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/Index_old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXhfb2xkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/Main.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTWFpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/MainStock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTWFpblN0b2NrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/MainUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTWFpblVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/ResetPwdPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUmVzZXRQd2RQYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/ShowUserPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cU2hvd1VzZXJQYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cU2lnblVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/SignUp2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cU2lnblVwMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Login/UserManagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cVXNlck1hbmFnZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/QueryInfo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlcnlJbmZvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/QueryInfo/IndexVxe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlcnlJbmZvXEluZGV4VnhlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/QueryInfo/IndexVxe_Old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlcnlJbmZvXEluZGV4VnhlX09sZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/QueryInfo/Query.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlcnlJbmZvXFF1ZXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/_Layout_Old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfT2xkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/_tableLayout_Old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF90YWJsZUxheW91dF9PbGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/_tableLayout_vxe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF90YWJsZUxheW91dF92eGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/_tableLayout_vxe_old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF90YWJsZUxheW91dF92eGVfb2xkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/StockRecom/EditDataPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tSZWNvbVxFZGl0RGF0YVBhbmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/StockRecom/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tSZWNvbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/StockRecom/SearchView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tSZWNvbVxTZWFyY2hWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/StockRecom/UploadFile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tSZWNvbVxVcGxvYWRGaWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/User/Index2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleDIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/User/IndexVxe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleFZ4ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/User/IndexVxe_Old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleFZ4ZV9PbGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/User/Index_Old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleF9PbGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/User/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/User/SignUp2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-3onujky251
+
+[D:/projectManage/projectsql/TeachSample/WebAppCore/Views/Shared/_Layout_v2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfdjIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-sbr5rldn8t

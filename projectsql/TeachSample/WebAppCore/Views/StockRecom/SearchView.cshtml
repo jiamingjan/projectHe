@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "股票推荐";
+    Layout = "~/Views/Shared/_tableLayout_Old.cshtml";
+}
+
+@section CSS{
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="stylesheet" href="~/lib/old/css/bootstrap.min.css" />
+    <style>
+
+        .layui-layer-tab .layui-layer-content {
+            position: absolute !important;
+            left: 0px !important;
+        }
+
+        .layui-layer-tab .layui-layer-tabmain {
+            padding: 0px;
+        }
+
+        iframe {
+            width: 820px;
+            height: 600px;
+        }
+
+        /*iframe {
+                            width: 600px;
+                            height: 360px;
+                        }*/
+
+
+        .form-group {
+            margin-right: 30px;
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                margin-right: 10px;
+            }
+    </style>
+}
+@section JS{
+
+    <script src="~/lib/old/js/jquery.min.js"></script>
+    <script src="~/lib/old/js/bootstrap.min.js"></script>
+    <script src="~/lib/old/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="~/lib/old/js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="~/lib/old/js/locales/zh.js"></script>
+    <script src="~/lib/old/js/MyTool.js"></script>
+    <script src="~/lib/old/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
+
+    <script>
+
+        function StockTable() {       
+            $('#searchBtn').bind('click', function () {
+                var userName = "";//Cookies.get('UserName');//这里会错Cookies没定义，现在只能后台去session
+                var param = "?stockCode=" + $("#stockCode").val() + "&userAccount=" + userName;
+                $.ajax({
+                    url: "StockSearch" + param,
+                    type: "GET",
+                    async: false,                    
+                    success: function (result) {
+                        //if (json.result == 'success') {}
+                        if (result == null || result == '' || result == undefined) {
+                            layer.msg('查询失败！', { icon: 2, time: 2000 });
+                        }
+                        else {
+                            var json = $.parseJSON(result);
+                            if (json.code == 200) {
+                                if (json.data.length == 1)
+                                    $('#stockRecom1').val('股票名称:' + json.data[0].StockName + ',股票代码:' + json.data[0].StockCode);
+                                else if (json.data.length == 2) {
+                                    $('#stockRecom1').val('股票名称:' + json.data[0].StockName + ',股票代码:' + json.data[0].StockCode);
+                                    $('#stockRecom2').val('股票名称:' + json.data[1].StockName + ',股票代码:' + json.data[1].StockCode);
+                                }
+                                else
+                                    layer.msg('没有对该股票的推荐！', { icon: 2, time: 2000 });
+                            }                            
+                            else
+                                layer.msg('查询失败！' + json.msg, { icon: 2, time: 2000 });
+                        }
+                    }
+                });
+            });
+
+            $('#clearBtn').bind('click', function () {
+                $('#stockCode').val("");
+            });
+        }
+
+        $(document).ready(function () {
+            var tool = new MyTool();
+            var stock = new StockTable();            
+        });
+
+    </script>
+}
+
+@section Body{
+    <body>
+        <div class="wrapper wrapper-content  animated fadeInRight" style="padding-bottom:0px; padding:0px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox " style="margin-bottom:0px;">
+                        <div class="ibox-title">
+                            <h5>股票推荐</h5>
+                        </div>
+                        <div class="ibox-content" style="padding-bottom:10px;">
+
+                            <form class="form-inline" id="searchForm">
+                                <div class="form-group">
+                                    <label for="customer">输入股票代码：</label>
+                                    <input type="text" class="form-control" id="stockCode" name="stockCode">
+                                </div>  
+
+                                <div class="form-group">                                    
+                                    <button id="searchBtn" type="button" class="btn btn-w-m btn-success" style="margin-left: 10px;">搜索</button>
+                                </div>
+                            </form>
+
+                            <br />
+                            <br />
+                            @*下面是为了在手机上也适配一些*@
+                            <form class="form-inline" id="searchForm2">
+                            <label for="startTime">优选结果1：</label>
+                            <div class="form-group">
+                                <input readonly  placeholder="" style="margin-left:5px;" width="300" id="stockRecom1" name="stockRecom1">
+                            </div>
+                            </form>
+                            <br />
+                            <br />
+                            <form class="form-inline" id="searchForm3">
+                            <label for="startTime">优选结果2：</label>
+                            <div class="form-group">
+                                <input readonly placeholder="" style="margin-left:5px;" width="300" id="stockRecom2" name="stockRecom2">
+
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+}

@@ -1,0 +1,196 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "ResetPwdPanel";
+    Layout = "~/Views/Shared/_Layout_Old.cshtml";
+}
+@using WebAppCore.ViewModels
+@using System.Collections.Generic
+
+@section CSS{
+    <link href="~/lib/old/css/style.css" rel="stylesheet" />
+    <link href="~/lib/old/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/old/css/animate.css" rel="stylesheet" />
+    <link href="~/lib/old/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/old/js/plugins/layer/skin/layer.css" rel="stylesheet" />
+    <link href="~/lib/old/js/plugins/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+    <style>
+        .layui-layer-tab .layui-layer-content {
+            position: absolute !important;
+            left: 50px !important;
+        }
+
+        .layui-layer-tab .layui-layer-tabmain {
+            padding: 20px;
+        }
+
+    </style>
+}
+@section JS{
+    <script src="~/lib/old/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="~/lib/old/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
+    <script src="~/lib/old/js/layer.min.js"></script>
+    <script src="~/lib/old/js/md5.js"></script>
+    <script src="~/lib/old/js/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="~/lib/old/js/MyTool.js"></script>
+
+    <script src="~/lib/old/js/jquery.min.js"></script>
+    <script src="~/lib/old/js/bootstrap.min.js"></script>
+    <script src="~/lib/old/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="~/lib/old/js/jquery-ui.custom.min.js"></script>
+    <script src="~/lib/old/js/content.js"></script>
+    <script src="~/lib/old/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/lib/old/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/lib/old/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="~/lib/old/js/plugins/validate/messages_zh.min.js"></script>
+
+    <script>
+        //启动页面执行
+        $(document).ready(function () {
+
+            //初始化一些特殊控件
+            //initSpecialControl();
+            // $(".btn").dropdown();
+        });
+
+
+
+        $('#cancelBtn').bind('click', function () {
+
+        });
+
+        //检查必填项是否填上
+        function CheckRequired() {
+            if ($('#Password').val() != $('#Password2').val()) {
+                layer.msg('密码不一致！', { icon: 5, time: 2000 });
+                //layer.alert("密码不一致");
+                return false;
+            }
+            if ($('#Password').val() == "" || $('#Password').val() == null) {
+                layer.msg('密码不能为空！', { icon: 5, time: 2000 });
+                //layer.alert("密码不能为空");
+                return false;
+            }
+
+            if ($('#Password').val().length > 13) {
+                layer.msg('密码太长！', { icon: 5, time: 2000 });
+                //layer.alert("密码不能为空");
+                return false;
+            }
+        }
+
+
+        $('#saveBtn').bind('click', function () {
+            var url = "UpdatePwd";
+            var opr = '修改密码';
+
+            if (CheckRequired() == false)
+                return;
+
+            var Password = $("#Password").val();
+            Password = hex_md5(Password);
+            //$("#Password").val(Password);//这个要有，下面的语句读的就是重新赋值后的
+            //var param = $("#contentForm").serialize();
+            var param = "&UserName=" + $("#UserName").val();
+            param = param + "&Password=" + Password;
+
+            $.ajax(
+                {
+                    url: url,
+                    type: "GET",
+                    async: false,
+                    data: param,
+                    success: function (data) {
+                        var json = $.parseJSON(data);
+                        if (json.code == 200) {
+                            layer.msg(opr + '成功！', { icon: 1, time: 2000 });
+                            //layer.alert(opr + '成功！');
+                            parent.$('#searchBtn').click(); //刷新表格
+                        }
+                        else {
+                            layer.msg(opr + "失败！" + json.msg, { icon: 2, time: 2000 });
+                            //layer.alert(opr + "失败！");
+                            // $("#Info").html("删除失败");
+                        }
+                    }
+                });
+        });
+    </script>
+}
+
+@section Body{
+    <body class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                @*<div class="col-sm-6">*@
+                <div class="ibox float-e-margins" style="width:80%; margin:auto">
+                    @*这里居中，占70%*@
+                    <div class="ibox-title">
+                        <h5>修改密码</h5>
+
+                        @*<div class="ibox-tools">
+                    <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                    <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                    <li>
+                    <a href="form_basic.html#">选项1</a>
+                    </li>
+                    <li>
+                    <a href="form_basic.html#">选项2</a>
+                    </li>
+                    </ul>
+                    <a class="close-link">
+                    <i class="fa fa-times"></i>
+                    </a>
+                    </div>*@
+                    </div>
+                    <div class="ibox-content">
+                        @*<form class="form-inline" id="contentForm">*@
+                        <form class="form-horizontal" id="contentForm" role="form">
+                            @{
+                                /**/
+
+                                /**/
+
+                                ResetPasswordReq DetailData = ViewBag.DetailData;
+                            }
+
+                            <div class="form-group" style="display:none;">
+                                <label class="col-sm-2 control-label">用户名<span style="color:red;">* </span></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="UserName" name="UserName" type="text" value="@DetailData.UserName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">密码<span style="color:red;">* </span></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="Password" name="Password" type="password" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">确认密码<span style="color:red;">* </span></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="Password2" name="Password2" type="password" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <button type="button" id="saveBtn" class="btn btn-w-m btn-success" style="margin-left: 0px;">
+                                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> 保  存
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                @*</div>*@
+            </div>
+        </div>
+    </body>
+}

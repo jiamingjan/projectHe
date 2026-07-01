@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.teach.mapper.TeachProjectInfoMapper">
+
+    <resultMap type="com.ruoyi.teach.domain.entity.TeachProjectInfo" id="TeachProjectInfoResult">
+        <result property="id" column="Id"/>
+        <result property="prjName" column="PrjName"/>
+        <result property="prjCode" column="PrjCode"/>
+        <result property="prjType" column="PrjType"/>
+        <result property="prjStatus" column="PrjStatus"/>
+        <result property="prjDesc" column="PrjDesc"/>
+        <result property="startDate" column="StarDate"/>
+        <result property="endDate" column="EndDate"/>
+        <result property="manager" column="Manager"/>
+        <result property="money" column="Money"/>
+        <result property="remark" column="Remark"/>
+        <result property="createBy" column="CreateBy"/>
+        <result property="updateBy" column="UpdateBy"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="updateTime" column="UpdateTime"/>
+        <result property="deleteTime" column="DeleteTime"/>
+    </resultMap>
+
+
+
+</mapper>

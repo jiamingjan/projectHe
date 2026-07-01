@@ -1,0 +1,3 @@
+[console_scripts]
+ddet-dev = main:development_entry_point
+ddet-prod = main:entry_point

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.teach.mapper.FalldownDeviceMapper">
+
+    <resultMap id="BaseResultMap" type="com.ruoyi.teach.domain.entity.FalldownDevice">
+            <id property="id" column="Id" />
+            <result property="deviceCode" column="DeviceCode" />
+            <result property="status" column="Status" />
+            <result property="model" column="Model" />
+            <result property="contactPhones" column="ContactPhones" />
+            <result property="phone" column="Phone" />
+            <result property="flag" column="Flag" />
+            <result property="createBy" column="CreateBy" />
+            <result property="updateBy" column="UpdateBy" />
+            <result property="remark" column="Remark" />
+            <result property="createTime" column="CreateTime" />
+            <result property="updateTime" column="UpdateTime" />
+            <result property="deleteTime" column="DeleteTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Id,DeviceCode,Status,Model,ContactPhones,Phone,
+        Flag,CreateBy,UpdateBy,Remark,CreateTime,
+        UpdateTime,DeleteTime
+    </sql>
+
+    <select id="findByConditions" resultMap="BaseResultMap">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM
+            falldown_device
+        <where>
+            <if test="deviceCode != null">
+                <bind name="codePattern" value="'%' + deviceCode + '%'" />
+                AND DeviceCode LIKE #{codePattern}
+            </if>
+            <if test="model != null">
+                <bind name="modelPattern" value="'%' + model + '%'" />
+                AND Model LIKE #{modelPattern}
+            </if>
+            <if test="status != null">
+                AND Status = #{status}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+    <select id="findById" resultMap="BaseResultMap">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM
+            falldown_device
+        WHERE
+            Id = #{id}
+    </select>
+
+    <insert id="addFalldownDevice" parameterType="com.ruoyi.teach.domain.entity.FalldownDevice">
+        INSERT INTO falldown_device (
+            DeviceCode,
+            Status,
+            Model,
+            ContactPhones,
+            Phone,
+            Flag,
+            CreateBy,
+            UpdateBy,
+            Remark,
+            CreateTime,
+            UpdateTime
+        ) VALUES (
+            #{deviceCode},
+            #{status},
+            #{model},
+            #{contactPhones},
+            #{phone},
+            #{flag},
+            #{createBy},
+            #{updateBy},
+            #{remark},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateFalldownDevice" parameterType="com.ruoyi.teach.domain.entity.FalldownDevice">
+        UPDATE falldown_device
+        <set>
+            <if test="deviceCode != null">DeviceCode = #{deviceCode},</if>
+            <if test="status != null">Status = #{status},</if>
+            <if test="model != null">Model = #{model},</if>
+            <if test="contactPhones != null">ContactPhones = #{contactPhones},</if>
+            <if test="phone != null">Phone = #{phone},</if>
+            <if test="flag != null">Flag = #{flag},</if>
+            <if test="updateBy != null">UpdateBy = #{updateBy},</if>
+            <if test="remark != null">Remark = #{remark},</if>
+            UpdateTime = NOW()
+        </set>
+        WHERE
+            Id = #{id}
+    </update>
+
+    <delete id="deleteFalldownDevice">
+        DELETE FROM falldown_device
+        WHERE
+            Id = #{id}
+    </delete>
+</mapper>

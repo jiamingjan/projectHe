@@ -1,0 +1,86 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "上传";
+    Layout = "~/Views/Shared/_Layout_Old.cshtml";
+}
+
+@section CSS{
+    <meta charset="UTF-8" />
+    <title>Krajee JQuery Plugins - &copy; Kartik</title>  
+        @*注意bootstrap.min.css必须要用下面行*@
+    <link rel="stylesheet" href="~/lib/old/css/bootstrap.min.css" />    
+    <link rel="stylesheet" href="~/lib/old/css/fileinput.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAppCore.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            padding: 10px 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        table, tr, td {
+            width: 100%;
+            border: 1px solid #B3B4BA;
+            padding-left: 5px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        td {
+            width: 25%;
+            text-align: left;
+        }
+
+            td:nth-child(odd) {
+                background: #f9f9f9;
+            }
+    </style>
+}
+@section JS{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/old/js/fileinput.js"></script>
+    <script src="~/lib/old/js/locales/zh.js"></script>
+    <script src="~/lib/old/js/MyTool.js"></script>    
+   
+    <script>
+
+        $("#input-line").fileinput({
+            //上传的地址
+            uploadUrl: "UploadStockFile",
+            language: 'zh', //设置语言
+            showCaption: false,
+            enctype: 'multipart/form-data',
+            dropZoneEnabled: false,
+            allowedFileExtensions: ['xlsx', 'xls']//接收的文件后缀,            
+        }).on("fileuploaded", function (event, data, previewId, index) {
+            if (data.response.result != "right") {
+                alert(data.response.result);
+            }
+            else{
+                alert("上传成功，数量："+data.response.num);
+            }
+
+
+            });
+
+       
+    </script>
+}
+
+@section Body{
+    <body>
+        <div class="form-group">
+            <label for="input-line">股票数据导入：(必须是Excel文件：'.xlsx', '.xls')</label>
+            <input id="input-line" name="input-line" multiple type="file" class="file" />
+        </div>
+        <br />       
+
+    </body>
+}
